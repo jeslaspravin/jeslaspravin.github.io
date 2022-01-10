@@ -1,7 +1,9 @@
 {
-	"workItems": [
+	"blogs": [
 		{
 			"id": 1,
+            "timestamp":1641842115,
+            "tags":["as", "bs", "cs"],
 			"name":"Easy Quest Creator",
 			"type":"Game Plugin",
 			"shortDesc": "Lets user create quest faster using graph based editors",
@@ -14,6 +16,8 @@
 		},
 		{
 			"id": 2,
+            "timestamp":1641842115,
+            "tags":["as", "bs", "cs"],
 			"name":"Dialog System Plugin",
 			"type":"Free & Open source",
 			"shortDesc": "Easily create dialogs and play them without any line of code",
@@ -26,6 +30,8 @@
 		},
 		{
 			"id": 3,
+            "timestamp":1641842115,
+            "tags":["as", "bs", "gss"],
 			"name":"Reactive Environment",
 			"type":"Free & Open source",
 			"shortDesc": "Very simple compute shader based reactive environment",
@@ -38,6 +44,8 @@
 		},		
 		{
 			"id": 4,
+            "timestamp":1641842115,
+            "tags":["as", "only", "cs"],
 			"name":"Message Protocols Plugin",
 			"type":"Free & Open source",
 			"shortDesc": "Allows creating custom connection either Unreal Instance - Unreal Instance or Unreal Instance - Other Applications",
