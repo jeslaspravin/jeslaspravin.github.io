@@ -1,0 +1,90 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you: 
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Read if any questions like why this done the way it is? or Some useful links
+# https://www.kiltandcode.com/2020/04/30/how-to-create-a-blog-using-jekyll-and-github-pages-on-windows/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Jeslas Pravin | Blogs
+name: Jeslas Pravin
+email: pravinjeslas@gmail.com
+description: >-
+  Hello, This site will be the host of all my blogs that I hope to write.
+  I am looking forward to blog anything that I find interesting and would like to revisit when ever I wish to.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://jeslaspravin.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+permalink: /:categories/:year/:month/:day/:title/
+repository: "jeslaspravin/jeslaspravin.github.io"
+twitter_username: jeslus
+github_username:  jeslaspravin
+
+# minimal-mistakes theme settings
+# https://mmistakes.github.io/minimal-mistakes/docs/layouts/#home-page-layout
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+minimal_mistakes_skin: "dark" # "neon" 
+breadcrumbs: false
+teaser: /assets/images/bg640x360.jpg
+logo: /assets/images/myIcon48x48.ico
+masthead_title: "My Blogs"
+read_time: true
+# Comments configuration
+comments: true
+comments:
+  provider: "disqus"
+  disqus: 
+    shortname: "jeslaspravin"
+# Search configuration (Search ID is registered in pravinjeslas@gmail.com)
+search: true
+google:
+  search_engine_id: 570e1d7c924e0d37f
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-9CHVHKGG3J"
+    anonymize_ip: false # default
+
+# Build settings
+#theme: minima
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+plugins:
+  - github-pages
+  - jekyll-include-cache
+  - webrick
+
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
