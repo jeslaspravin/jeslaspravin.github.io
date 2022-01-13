@@ -11,6 +11,7 @@
 # If you need help with YAML syntax, here are some quick references for you: 
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
+# https://kramdown.gettalong.org/quickref.html
 #
 # Read if any questions like why this done the way it is? or Some useful links
 # https://www.kiltandcode.com/2020/04/30/how-to-create-a-blog-using-jekyll-and-github-pages-on-windows/
@@ -36,16 +37,20 @@ github_username:  jeslaspravin
 
 # minimal-mistakes theme settings
 # https://mmistakes.github.io/minimal-mistakes/docs/layouts/#home-page-layout
+compress_html:
+  clippings: all
+  ignore:
+    envs: development 
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 minimal_mistakes_skin: "dark" # "neon" 
 breadcrumbs: false
-teaser: /assets/images/bg640x360.jpg
-logo: /assets/images/myIcon48x48.ico
+teaser: "/assets/images/defaultBlogTitle.jpg"
+logo: "/assets/images/myIcon48x48.ico"
+og_image: "/assets/images/SIGN8392_focused.jpg"
 masthead_title: "My Blogs"
 read_time: true
 # Comments configuration
-comments: true
 comments:
   provider: "disqus"
   disqus: 
@@ -59,6 +64,53 @@ analytics:
   google:
     tracking_id: "G-9CHVHKGG3J"
     anonymize_ip: false # default
+# Accounts
+twitter:
+  username: "jeslus"
+author:
+  name: "Jeslas Pravin"
+  avatar: "/assets/images/SIGN8392_focused.jpg"
+  bio: >-
+    "`Game and Game Engine programmer` with good knowledge and understanding in graphics programming using `Vulkan` API. I love `C++`(Maybe because I have not tried Rust or Zig).
+     I like metaprogramming with templates in my solo project only"
+  location: "Berlin, Germany"
+  links:
+    - label: "My Webpage"
+      icon: "fas fa-fw fa-link"
+      url: "http://jeslaspravin.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jeslus"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jeslaspravin"
+# footer
+footer:
+  links:
+    - label: "My Webpage"
+      icon: "fas fa-fw fa-link"
+      url: "http://jeslaspravin.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jeslus"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jeslaspravin"
+# defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      classes: 
+        wide
 
 # Build settings
 #theme: minima
