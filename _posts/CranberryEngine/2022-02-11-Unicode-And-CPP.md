@@ -6,6 +6,7 @@ mathjax: true
 categories: 
     - cranberry
 header:
+    teaser: /assets/images/CranberryEngine/Unicode/unicodes.png
 ---
 ## Unicode in my engine
 Recently I converted my engine strings to use Unicode platform dependent encoding rather than previously used `ASCII` strings stored in Multi byte char array. This blog will be my understanding on what Unicode is and how they are encoded in UTF-8, UTF-16 or UTF-32.
@@ -57,7 +58,7 @@ More over, For just display character cases as UTF-8 encodes first 128 codes in 
 #### UTF-16
 The UTF-16 standard supports encoding the entire BMP in a word. So code points from `0 to 65535(0xFFFF)` can be encoded in a word. In order to accomplish that without collision from other planes Unicode standard reserved a range of codepoints`[0xD800, 0xDFFF]` for special purpose and never uses it for any character. This allows using this range as surrogates for higher and lower word in UTF-16.
 
-Each plane is comprised of $$2^{16}$$`(0x10000)`. To represent any code points above $2^{16}-1$`(0xFFFF)` UTF-16 uses 2 words(4Bytes). Even though it stores in 4Bytes it uses only 20bits for actual data remaining reasoning behind that(If I understand right) is we do `codepoint - 0x10000` when encoding a codepoint. Which clamps the codepoints to range `[0, 65535]`. Now we have to split the subtracted codepoint into two 10bits value as High surrogate(11th bit to 20th bit) and Low surrogate(1st bit to 10th bit). The higher surrogate is added with `0xD800` and placed in lower index of word string, The lower surrogate is added with `0xDC00` and placed in higher index of word string. This gives us UTF-16 encoded multi-word character.
+Each plane is comprised of $2^{16}$`(0x10000)`. To represent any code points above $2^{16}-1$`(0xFFFF)` UTF-16 uses 2 words(4Bytes). Even though it stores in 4Bytes it uses only 20bits for actual data remaining reasoning behind that(If I understand right) is we do `codepoint - 0x10000` when encoding a codepoint. Which clamps the codepoints to range `[0, 65535]`. Now we have to split the subtracted codepoint into two 10bits value as High surrogate(11th bit to 20th bit) and Low surrogate(1st bit to 10th bit). The higher surrogate is added with `0xD800` and placed in lower index of word string, The lower surrogate is added with `0xDC00` and placed in higher index of word string. This gives us UTF-16 encoded multi-word character.
 
 Read more at [UTF-16 Wiki]
 ```
