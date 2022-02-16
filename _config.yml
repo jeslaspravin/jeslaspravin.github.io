@@ -41,6 +41,8 @@ compress_html:
   clippings: all
   ignore:
     envs: development 
+# Conversion
+markdown: kramdown
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 minimal_mistakes_skin: "dark" # "neon" 

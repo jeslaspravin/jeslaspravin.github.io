@@ -13,6 +13,12 @@ It is year ***2022*** and my resolution for this year is to write blogs about my
 
 My initial thought was to have blog integrated into [my webpage] however I do not want to create blog and also worry about scripts and styles. Then I remembered that [github-pages] seems to be cost and time effective options, So I went on checking about it and soon I realized that I have to do the same scripting and styling. It was at this point I stumbled upon static html file generators one of which is [jekyll] and I was surprised at number theme prebuilt and ready to go with this generator.
 
+Following are list of AWS services required for setting up [my webpage]
+* `Route53` for DNS
+* `S3` for static page hosting in bucket
+* `AWS Certificate manager`(optional) to manage SSL certificate for my domains
+* `CloudFront`(optional) to glue/intercept requests to my domain and make then secure
+
 ![image-right](/assets/images/First-Blog/Webpage-Blog-Filter.png){: .align-right style="border-radius: 10px;" }
 Now that I worked out a target, I gathered energy to update my website to include a blog redirectors and some filters to blogs list. These redirectors will be containing a short summary of the blog content. I familiarized/refreshed myself again with `typescript`, `css`, and other static page related concepts. Also I understood `Observables` in typescript little better than last time. I setup my personal machine with environment and began rewriting my code. Following improvement or changes I did to my webpage code.
 * Improved service typescripts to better cache responses
