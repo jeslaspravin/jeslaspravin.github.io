@@ -17,10 +17,11 @@
       page_path: path
     }
   );
+  pageName = "{{ page.title | default: 'home' }}"
   gtag('event', 'blog_details',
     {
-      event_category: 'blog_details',
-      event_label: "{{ page.title | default: 'home' }}"
+      event_category: pageName,
+      event_label: pageName
     }
-  );
+  ); 
 </script>

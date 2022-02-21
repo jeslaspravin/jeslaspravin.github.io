@@ -18,8 +18,7 @@
 {% if jekyll.environment == 'production' and site.analytics.provider and page.analytics != false %}
 
 {% case site.analytics.provider %}
-{% when "google-gtag" %}  
-
+{% when "custom-google-gtag" %}
 <!-- from https://stackoverflow.com/questions/16611497/how-can-i-get-the-name-of-an-html-page-in-javascript -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tracking_id }}"></script>
 <script>
@@ -28,6 +27,7 @@
   gtag('js', new Date());
 
   gtag('config', '{{ site.analytics.google.tracking_id }}');
+  // Send in data
   var path = window.location.pathname.replace(window.location.hostname, '');
   var pageName = path.split("/").pop();
   gtag('config', '{{ site.analytics.google.tracking_id }}', 
@@ -37,13 +37,13 @@
       page_path: path
     }
   );
+  pageName = "{{ page.title | default: 'home' }}"
   gtag('event', 'blog_details',
     {
-      event_category: 'blog_details',
-      event_label: '{{ page.title }}'
+      event_category: pageName,
+      event_label: pageName
     }
   ); 
 </script>
 {% endcase %}
-
 {% endif %}
