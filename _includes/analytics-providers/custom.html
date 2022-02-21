@@ -20,7 +20,7 @@
   gtag('event', 'blog_details',
     {
       event_category: 'blog_details',
-      event_label: '{{ page.title }}'
+      event_label: {{ page.title | default: 'home' }}
     }
   );
 </script>
