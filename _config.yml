@@ -65,7 +65,7 @@ analytics:
   provider: "google-gtag"
   google:
     tracking_id: "G-9CHVHKGG3J"
-    anonymize_ip: false # default
+    anonymize_ip: true # default
 # Accounts
 twitter:
   username: "jeslus"
