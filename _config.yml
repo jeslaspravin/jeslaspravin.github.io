@@ -62,7 +62,7 @@ search: true
 google:
   search_engine_id: 570e1d7c924e0d37f
 analytics:
-  provider: "google-gtag"
+  provider: "custom" #"google-gtag"
   google:
     tracking_id: "G-9CHVHKGG3J"
     anonymize_ip: true # default

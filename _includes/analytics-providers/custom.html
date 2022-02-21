@@ -1,0 +1,26 @@
+<!-- Global site tag (gtag.js) - Google Analytics, Just custom analytics with events -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.tracking_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.analytics.google.tracking_id }}');
+
+  // from https://stackoverflow.com/questions/16611497/how-can-i-get-the-name-of-an-html-page-in-javascript
+  var path = window.location.pathname.replace(window.location.hostname, '');
+  var pageName = path.split("/").pop();
+  gtag('config', '{{ site.analytics.google.tracking_id }}', 
+    {
+      page_location : window.location.hostname,
+      page_title : pageName,
+      page_path: path
+    }
+  );
+  gtag('event', 'blog_details',
+    {
+      event_category: 'blog_details',
+      event_label: '{{ page.title }}'
+    }
+  );
+</script>

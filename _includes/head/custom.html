@@ -13,30 +13,3 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 {% endif %}
-
-<!-- Analytics function -->
-{% if jekyll.environment == 'production' and site.analytics.provider and page.analytics != false %}
-
-{% case site.analytics.provider %}
-{% when "google-gtag" %}  
-<!-- from https://stackoverflow.com/questions/16611497/how-can-i-get-the-name-of-an-html-page-in-javascript -->
-<script>
-  var path = window.location.pathname.replace(window.location.hostname, '');
-  var pageName = path.split("/").pop();
-  window.gtag('config', '{{ site.analytics.google.tracking_id }}', 
-    {
-      page_location : window.location.hostname,
-      page_title : pageName,
-      page_path: path
-    }
-  );
-  window.gtag('event', 'blog_details',
-    {
-      event_category: 'blog_details',
-      event_label: '{{ page.title }}'
-    }
-  ); 
-</script>
-{% endcase %}
-
-{% endif %}
