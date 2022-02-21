@@ -23,14 +23,14 @@
 <script>
   var path = window.location.pathname.replace(window.location.hostname, '');
   var pageName = path.split("/").pop();
-  gtag('config', '{{ site.analytics.google.tracking_id }}', 
+  window.gtag('config', '{{ site.analytics.google.tracking_id }}', 
     {
       page_location : window.location.hostname,
       page_title : pageName,
       page_path: path
     }
   );
-  gtag('event', 'blog_details',
+  window.gtag('event', 'blog_details',
     {
       event_category: 'blog_details',
       event_label: '{{ page.title }}'
