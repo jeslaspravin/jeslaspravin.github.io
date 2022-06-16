@@ -57,14 +57,14 @@ comments:
 #  provider: "disqus"
 #  disqus: 
 #    shortname: "jeslaspravin"
-provider: "giscus"
-  giscus:
-    repo_id              : "R_kgDOGpvobA"
-    category_name        : "General"
-    category_id          : "DIC_kwDOGpvobM4CPs0-"
-    discussion_term      : "pathname"
-    reactions_enabled    : "1"
-    theme                : "preferred_color_scheme"
+  provider: "giscus"
+    giscus:
+      repo_id              : "R_kgDOGpvobA"
+      category_name        : "General"
+      category_id          : "DIC_kwDOGpvobM4CPs0-"
+      discussion_term      : "pathname"
+      reactions_enabled    : "1"
+      theme                : "preferred_color_scheme"
 # Search configuration (Search ID is registered in pravinjeslas@gmail.com)
 search: true
 google:
