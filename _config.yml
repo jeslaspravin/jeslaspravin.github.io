@@ -64,7 +64,7 @@ comments:
     category_id          : "DIC_kwDOGpvobM4CPs0-"
     discussion_term      : "pathname"
     reactions_enabled    : "1"
-    theme                : "preferred_color_scheme"
+    theme                : "transparent_dark"
 # Search configuration (Search ID is registered in pravinjeslas@gmail.com)
 search: true
 google:
