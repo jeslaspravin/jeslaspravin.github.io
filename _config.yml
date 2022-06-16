@@ -22,8 +22,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Jeslas Pravin | Blogs
-name: Jeslas Pravin
+title: "Jeslas Pravin | Blogs"
+name: "Jeslas Pravin"
 email: pravinjeslas@gmail.com
 description: >-
   Hello, This site will be the host of all my blogs that I hope to write.
