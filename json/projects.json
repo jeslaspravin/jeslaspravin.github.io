@@ -2,7 +2,7 @@
 	"workItems": [
 		{
 			"id": 13,
-			"name":"Hobby Game Engine",
+			"name":"Cranberry Game Engine",
 			"type":"Game Engine",
 			"shortDesc": "Hobby game engine I created in pursuit of learning more and more",
 			"description": "<h6>Engine : Hobby Game Engine</h6><p>              This project will be my life time project in which I will be experimenting various new technologies both in graphics and other engine related topics.Also this engine will be targetting programmer more than artists.</p><p>Features : </p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reflection generator for C++</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shaders are reflected and Parameters can be addressed with names</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">PBR Materials</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Image base lighting</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Point, Spot, Directional lights</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shadows, Cube mapped shadows and Cascaded shadows</li></ul>",
@@ -10,7 +10,7 @@
 			"mainImageUrl": "gameEngine.jpg",
 			"videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
 			"link": null,
-			"gitLink": null
+			"gitLink": "https://github.com/jeslaspravin/Cranberry"
 		},
 		{
 			"id": 12,
