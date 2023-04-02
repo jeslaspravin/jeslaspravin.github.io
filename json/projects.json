@@ -1,5 +1,17 @@
 {
-	"workItems": [        
+	"workItems": [
+		{
+			"id": 15,
+			"name":"Cranberry Game Engine",
+			"type":"Game Engine",
+			"shortDesc": "Hobby game engine I created in pursuit of learning more and more",
+			"description": "<h6>Engine : Hobby Game Engine</h6><p>              This project will be my life time project in which I will be experimenting various new technologies both in graphics and other engine related topics.Also this engine will be targetting programmer more than artists.</p><p>Features : </p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reflection generator for C++</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shaders are reflected and Parameters can be addressed with names</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">PBR Materials</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Image base lighting</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Point, Spot, Directional lights</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shadows, Cube mapped shadows and Cascaded shadows</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multiwindow widgets and Input handling</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Supported inputs mouse and keyboard</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">World/Actor/Components</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Unity style prefabs</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Job system using <a class=\"text-white\" href=\"https://github.com/jeslaspravin/CoPaT\" target=\"_blank\"><i class=\"fa fab fa-github\"></i>Copat</a></li></ul>",
+			"tileImageUrl": "gameEngineTitle.jpg",
+			"mainImageUrl": "gameEngine.jpg",
+			"videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
+			"link": null,
+			"gitLink": "https://github.com/jeslaspravin/Cranberry"
+		},        
 		{
 			"id": 14,
 			"name":"CoPaT Job System",
@@ -11,18 +23,18 @@
 			"videoUrl": "https://youtu.be/BYkprgtseaQ",
 			"link": null,
 			"gitLink": "https://github.com/jeslaspravin/CoPaT"
-		},
+		},        
 		{
 			"id": 13,
-			"name":"Cranberry Game Engine",
-			"type":"Game Engine",
-			"shortDesc": "Hobby game engine I created in pursuit of learning more and more",
-			"description": "<h6>Engine : Hobby Game Engine</h6><p>              This project will be my life time project in which I will be experimenting various new technologies both in graphics and other engine related topics.Also this engine will be targetting programmer more than artists.</p><p>Features : </p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reflection generator for C++</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shaders are reflected and Parameters can be addressed with names</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">PBR Materials</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Image base lighting</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Point, Spot, Directional lights</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shadows, Cube mapped shadows and Cascaded shadows</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multiwindow widgets and Input handling</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Supported inputs mouse and keyboard</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">World/Actor/Components</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Unity style prefabs</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Job system using <a class=\"text-white\" href=\"https://github.com/jeslaspravin/CoPaT\" target=\"_blank\"><i class=\"fa fab fa-github\"></i>Copat</a></li></ul>",
-			"tileImageUrl": "gameEngineTitle.jpg",
-			"mainImageUrl": "gameEngine.jpg",
-			"videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
+			"name":"rSimStudio",
+			"type":"Simulator | Unreal Engine",
+			"shortDesc": "The rSimStudio is for Simulating Arrival’s micro factories. Also developed and maintained another custom light weight simulator and editor to provide a light weight local alternative to our digital twin simulator for our engineers",
+			"description": "<h6>rSimStudio &amp; rSimEditor</h6><p>The rSimStudio is for Simulating Arrival’s micro factories, providing a test bed for our engineers. It is a digital twin of our factories. It also provides data set for our computer vision and deep learning research teams</p><p>The rSimEditor is for editing or creating factory descriptions in Arrival’s custom data language as well as validating those descriptions</p><p>My role :</p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Developed and Maintained a custom light weight game(render) engine just for visualizing factory configurations, It was my personal effort that helped several other developers in my team and other teams</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Created bridge libraries between ROS and Simulator</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Worked on modifying the build system to support modular content delivery in our environment</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Identified and Optimized several performance bottlenecks when simulating the factory and when streaming services</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Setup pixel streaming to support real-time streamed application of the simulator</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Created robust 2D mesh generator from polygon points and hole carver. The algorithm handles many edge cases to provide best result for simulating cutting in factory</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Several more interesting work in both Engine and Gameplay realms</li></ul>",
+			"tileImageUrl": "rSimStudioArrivalTile.jpg",
+			"mainImageUrl": "rSimStudioArrival.jpg",
+			"videoUrl": null,
 			"link": null,
-			"gitLink": "https://github.com/jeslaspravin/Cranberry"
+			"gitLink": null
 		},
 		{
 			"id": 12,
