@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 
-cpath = Path(os.path.dirname(__file__))
+cpath = Path(os.path.dirname(os.path.abspath(__file__)))
 
 class Server(BaseHTTPRequestHandler):
     def _set_headers(self):
@@ -28,6 +28,7 @@ class Server(BaseHTTPRequestHandler):
             if not fileAbsPath.is_dir() and file.endswith(".json"):
                 pathToFile["/{}/{}".format(cpath.name, file)] = fileAbsPath
             
+        # print('Request path ', self.path, ', Available paths', pathToFile, ' ',cpath)
         if self.path in pathToFile:
             self.wfile.write(pathToFile[self.path].read_bytes())
         else:
