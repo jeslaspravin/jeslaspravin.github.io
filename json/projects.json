@@ -11,7 +11,12 @@
                 {
                     "title": "Experimental PBR",
                     "shortDesc": "Screenshot of test scene in Experimental portion of the engine",
-                    "imgUrl": "gameEngine.jpg"
+                    "imgUrl": "https://jeslaspravin.github.io/assets/images/CranberryEngine/TestEngine(08-01-2023).jpg"
+                },
+                {
+                    "title": "Cranberry Editor",
+                    "shortDesc": "Screenshot of WIP editor interface",
+                    "imgUrl": "https://jeslaspravin.github.io/assets/images/CranberryEngine/CranberryEngine(08-01-2023).jpg"
                 }
             ],
             "videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
@@ -29,7 +34,7 @@
                 {
                     "title": "",
                     "shortDesc": "Running prime number calculation using this job system",
-                    "imgUrl": "copat.jpg"
+                    "imgUrl": "assets/copat.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/BYkprgtseaQ",
@@ -47,7 +52,7 @@
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
-                    "imgUrl": "rSimStudioArrival.jpg"
+                    "imgUrl": "assets/rSimStudioArrival.jpg"
                 }
             ],
             "videoUrl": null,
@@ -65,7 +70,7 @@
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
-                    "imgUrl": "avenge.jpg"
+                    "imgUrl": "assets/avenge.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/oS7dEzI_dEE",
@@ -107,7 +112,7 @@
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
-                    "imgUrl": "toonWater.jpg"
+                    "imgUrl": "assets/toonWater.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/SZoRLq6Amos",
@@ -137,7 +142,7 @@
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
-                    "imgUrl": "vulkan.jpg"
+                    "imgUrl": "assets/vulkan.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/uX7KN7zz75U",
@@ -179,7 +184,7 @@
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
-                    "imgUrl": "firstProject.jpg"
+                    "imgUrl": "assets/firstProject.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/edqyOCfA--k",

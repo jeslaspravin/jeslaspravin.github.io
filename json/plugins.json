@@ -11,7 +11,7 @@
                 {
                     "title": "",
                     "shortDesc": "",
-                    "imgUrl": "quest.jpg"
+                    "imgUrl": "assets/quest.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/_SFPk1cG6Fk",
@@ -29,7 +29,7 @@
                 {
                     "title": "",
                     "shortDesc": "",
-                    "imgUrl": "dialog.jpg"
+                    "imgUrl": "assets/dialog.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/144ko5dj4E0",
@@ -47,7 +47,7 @@
                 {
                     "title": "",
                     "shortDesc": "",
-                    "imgUrl": "reactive.jpg"
+                    "imgUrl": "assets/reactive.jpg"
                 }
             ],
             "videoUrl": "https://youtu.be/-cwc9cM-c8g",
