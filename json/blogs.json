@@ -1,34 +1,43 @@
+
 {
-	"blogs": [
-		{
-            "timestamp":1642107198914,
-            "tags":[],
-			"name":"First Blog",
-			"shortDesc": "Small write up on how my decision to write blogs and what I will write",
-			"description": "<p>In this very first blog I wrote about what made me to finally start writting blogs. I also wrote about the steps to finally start writting blogs which is surprising very simple with services available today</p><!--<br>-->            <p>I also cannot wait to write more in the future</p>",
-			"tileImageUrl": null,
-			"mainImageUrl": null,
-			"videoUrl": null,
-			"customLink": {
-                "link" : "https://jeslaspravin.github.io/general/2022/01/13/First-Blog/",
-                "dispName" : "Read More"
+    "blogs": [
+        {
+            "timestamp": 1642107198914,
+            "tags": [],
+            "name": "First Blog",
+            "shortDesc": "Small write up on how my decision to write blogs and what I will write",
+            "description": "<p>In this very first blog I wrote about what made me to finally start writting blogs. I also wrote about the steps to finally start writting blogs which is surprising very simple with services available today</p><!--<br>-->            <p>I also cannot wait to write more in the future</p>",
+            "tileImageUrl": null,
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink":
+            {
+                "link": "https://jeslaspravin.github.io/general/2022/01/13/First-Blog/",
+                "dispName": "Read More"
             },
-			"gitLink": null
-		},		
-		{
-            "timestamp":1644580800000,
-            "tags":["cranberry", "C++", "unicode", "utf", "encoding"],
-			"name":"Unicode and C++",
-			"shortDesc": "Experience when converting ASCII string to UTF-8/16/32 string in my engine",
-			"description": "<p>The blog provides some very basic explanation on Unicode and how I understood it in detail. I explained why I chose UTF-8 encoding for my engine</p><!--<br>--><p>I also wrote brief overview on UTF encodings and included source code of how I do conversions between various encodings. It also includes the encoding to codepoint conversion codes</p><!--<br>--><p>Some links to pages that helped me greatly when implementing this change is also included in the blog</p>",
-			"tileImageUrl": "unicodesTile.png",
-			"mainImageUrl": "unicodes.png",
-			"videoUrl": null,
-			"customLink": {
-                "link" : "https://jeslaspravin.github.io/cranberry/2022/02/11/Unicode-And-CPP/",
-                "dispName" : "Read More"
+            "gitLink": null
+        },
+        {
+            "timestamp": 1644580800000,
+            "tags": ["cranberry", "C++", "unicode", "utf", "encoding"],
+            "name": "Unicode and C++",
+            "shortDesc": "Experience when converting ASCII string to UTF-8/16/32 string in my engine",
+            "description": "<p>The blog provides some very basic explanation on Unicode and how I understood it in detail. I explained why I chose UTF-8 encoding for my engine</p><!--<br>--><p>I also wrote brief overview on UTF encodings and included source code of how I do conversions between various encodings. It also includes the encoding to codepoint conversion codes</p><!--<br>--><p>Some links to pages that helped me greatly when implementing this change is also included in the blog</p>",
+            "tileImageUrl": "unicodesTile.png",
+            "galleryImgs": [
+                {
+                    "title": "",
+                    "shortDesc": "",
+                    "imgUrl": "unicodes.png"
+                }
+            ],
+            "videoUrl": null,
+            "customLink":
+            {
+                "link": "https://jeslaspravin.github.io/cranberry/2022/02/11/Unicode-And-CPP/",
+                "dispName": "Read More"
             },
-			"gitLink": null
-		}
-	]
+            "gitLink": null
+        }
+    ]
 }
