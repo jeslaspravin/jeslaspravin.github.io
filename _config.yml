@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 # https://kramdown.gettalong.org/quickref.html
@@ -33,19 +33,19 @@ url: "https://jeslaspravin.github.io/" # the base hostname & protocol for your s
 permalink: /:categories/:year/:month/:day/:title/
 repository: "jeslaspravin/jeslaspravin.github.io"
 twitter_username: jeslus
-github_username:  jeslaspravin
+github_username: jeslaspravin
 
 # minimal-mistakes theme settings
 # https://mmistakes.github.io/minimal-mistakes/docs/layouts/#home-page-layout
 compress_html:
   clippings: all
   ignore:
-    envs: development 
+    envs: development
 # Conversion
 markdown: kramdown
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-minimal_mistakes_skin: "dark" # "neon" 
+minimal_mistakes_skin: "dark" # "neon"
 breadcrumbs: false
 teaser: "/assets/images/defaultBlogTitle.jpg"
 logo: "/assets/images/myIcon48x48.ico"
@@ -54,17 +54,17 @@ masthead_title: "My Blogs"
 read_time: true
 # Comments configuration
 comments:
-#  provider: "disqus"
-#  disqus: 
-#    shortname: "jeslaspravin"
+  #  provider: "disqus"
+  #  disqus:
+  #    shortname: "jeslaspravin"
   provider: "giscus"
   giscus:
-    repo_id              : "R_kgDOGpvobA"
-    category_name        : "General"
-    category_id          : "DIC_kwDOGpvobM4CPs0-"
-    discussion_term      : "pathname"
-    reactions_enabled    : "1"
-    theme                : "dark_dimmed" # transparent_dark is making comments hard to spot
+    repo_id: "R_kgDOGpvobA"
+    category_name: "General"
+    category_id: "DIC_kwDOGpvobM4CPs0-"
+    discussion_term: "pathname"
+    reactions_enabled: "1"
+    theme: "dark_dimmed" # transparent_dark is making comments hard to spot
 # Search configuration (Search ID is registered in pravinjeslas@gmail.com)
 search: true
 google:
@@ -121,8 +121,7 @@ defaults:
       comments: true
       share: true
       related: true
-      classes: 
-        wide
+      classes: wide
 
 # Build settings
 #theme: minima
@@ -132,7 +131,6 @@ plugins:
   - jekyll-include-cache
   - webrick
   - jekyll-feed
-
 
 # Exclude from processing.
 # The following items will not be processed, by default.

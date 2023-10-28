@@ -1,0 +1,36 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "type": "shell",
+    "tasks": [
+        {
+            "label": "[Private]Start development server",
+            "command": "bundle exec jekyll serve --config _config.yml,_dev_config.yml",
+            "options": {
+                "env": {
+                    "JEKYLL_ENV": "development"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "[LAN]Start development server",
+            "command": "bundle exec jekyll serve --host=0.0.0.0 --config _config.yml,_dev_config.yml",
+            "options": {
+                "env": {
+                    "JEKYLL_ENV": "development"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}
