@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "First Blog, Yay!!"
-date:   2022-01-13 22:00:00 +0100
+date:   2022-01-13
 categories: general
 header:
 ---

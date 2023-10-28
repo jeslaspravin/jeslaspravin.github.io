@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Unicode and C++"
-date:   2022-02-11 13:00:00 +0100
+date:   2022-02-11
 mathjax: true
 categories: 
     - cranberry

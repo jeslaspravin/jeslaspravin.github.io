@@ -10,6 +10,10 @@ bundle exec jekyll serve
 bundle exec jekyll serve
 ```
 
+## Notes on Jekyll
+
+* Understand permalink and links here <https://mademistakes.com/mastering-jekyll/how-to-link/>
+
 ## Notes on minimal mistakes
 
 * To understand more about various config used check the `minimal mistake` config.yaml

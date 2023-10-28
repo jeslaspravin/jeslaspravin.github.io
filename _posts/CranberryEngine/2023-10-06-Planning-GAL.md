@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Planning GAL"
-date:   2023-10-06 23:00:00 +0100
+date:   2023-10-06
 excerpt: "Determining the scope of the GAL"
 mathjax: true
 categories: 
