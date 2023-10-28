@@ -131,6 +131,7 @@ plugins:
   - github-pages
   - jekyll-include-cache
   - webrick
+  - jekyll-feed
 
 
 # Exclude from processing.

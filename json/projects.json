@@ -6,7 +6,7 @@
             "type": "Game Engine",
             "shortDesc": "Hobby game engine I created in pursuit of learning more and more",
             "description": "<h6>Engine : Hobby Game Engine</h6><p>              This project will be my life time project in which I will be experimenting various new technologies both in graphics and other engine related topics.Also this engine will be targetting programmer more than artists.</p><p>Features : </p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reflection generator for C++</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shaders are reflected and Parameters can be addressed with names</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">PBR Materials</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Image base lighting</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Point, Spot, Directional lights</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shadows, Cube mapped shadows and Cascaded shadows</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multiwindow widgets and Input handling</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Supported inputs mouse and keyboard</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">World/Actor/Components</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Unity style prefabs</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Job system using <a class=\"text-white\" href=\"https://github.com/jeslaspravin/CoPaT\" target=\"_blank\"><i class=\"fa fab fa-github\"></i>Copat</a></li></ul>",
-            "tileImageUrl": "gameEngineTitle.jpg",
+            "tileImageUrl": "assets/gameEngineTitle.jpg",
             "galleryImgs": [
                 {
                     "title": "Experimental PBR",
@@ -29,7 +29,7 @@
             "type": "Multithreading",
             "shortDesc": "This is a C++ 20 cooperative multi tasking library. I used coroutines to achieve cooperative multi task. I developed this for and also using this as task system in Cranberry game engine.",
             "description": "<h6>CoPaT Job System</h6><p>              This is a C++ 20 cooperative multi tasking library. I used coroutines to achieve cooperative multi task. I developed this for and also using this as task system in Cranberry game engine. I decided to make this library available publically under MIT license. I will try and merge any improvements or changes I implement when using this in my game engine. Best way to use this library is just copy the files in Source directory and paste it in your code base. Then all you have to do is</p><p>Features : </p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Switching job threads</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Dependencies using thread wait on a job</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Dependencies using job wait until all awaitables</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Dispatching parallel tasks to workers</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Priority Queues</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Enqueueing Coroutine Task to different Job system</li></ul>",
-            "tileImageUrl": "copatTile.jpg",
+            "tileImageUrl": "assets/copatTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
@@ -47,11 +47,12 @@
             "type": "Simulator | Unreal Engine",
             "shortDesc": "The rSimStudio is for Simulating Arrival’s micro factories. Also developed and maintained another custom light weight simulator and editor to provide a light weight local alternative to our digital twin simulator for our engineers",
             "description": "<h6>rSimStudio &amp; rSimEditor</h6><p>The rSimStudio is for Simulating Arrival’s micro factories, providing a test bed for our engineers. It is a digital twin of our factories. It also provides data set for our computer vision and deep learning research teams</p><p>The rSimEditor is for editing or creating factory descriptions in Arrival’s custom data language as well as validating those descriptions</p><p>My role :</p><ul class=\"list-group\"><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Developed and Maintained a custom light weight game(render) engine just for visualizing factory configurations, It was my personal effort that helped several other developers in my team and other teams</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Created bridge libraries between ROS and Simulator</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Worked on modifying the build system to support modular content delivery in our environment</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Identified and Optimized several performance bottlenecks when simulating the factory and when streaming services</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Setup pixel streaming to support real-time streamed application of the simulator</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Created robust 2D mesh generator from polygon points and hole carver. The algorithm handles many edge cases to provide best result for simulating cutting in factory</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Several more interesting work in both Engine and Gameplay realms</li></ul>",
-            "tileImageUrl": "rSimStudioArrivalTile.jpg",
+            "tileImageUrl": "assets/rSimStudioArrivalTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
+                    "altDesc": "Screenshot of simulated Arrival's micro factory.",
                     "imgUrl": "assets/rSimStudioArrival.jpg"
                 }
             ],
@@ -65,11 +66,12 @@
             "type": "Unreal Game",
             "shortDesc": "Personal Game Project using Unreal Engine that I am working on",
             "description": "<h6>Engine : Unreal Engine</h6>            <p>              Avenge Game Project is a third person shooter with level based linear story driven game where protoganist will fight through different levels to progress in stories.              The game will have good dialog system framework that lets protoganist have several choice and cause actual impact on world of his/her choices.            </p>            <p>I have learnt more than anything during this project from very simple coding framework/patterns to GPU internal processes including Ray Tracing,Ray Marching and more.              Thanks to Unreal's source access with debug feature.            </p>            <p>Features : </p>            <ul class=\"list-group\">                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Extensible Inventory system with trading ability</li>                <li class=\"list-group-item mb-1 py-1 masked-bg-dark text-reset\">Save & Load including level specific data persistence</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Advanced AI System with covering and shooting features</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Advanced Gun play, Controls and Cover Mechanics</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Extensible Quest System</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Dialog System</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Interactive world</li>            </ul>",
-            "tileImageUrl": "avengeTile.jpg",
+            "tileImageUrl": "assets/avengeTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
+                    "altDesc": "Screenshot of a test level with destruction, In this image brick short wall gets destroyed by a semiautomatic gun.",
                     "imgUrl": "assets/avenge.jpg"
                 }
             ],
@@ -83,7 +85,7 @@
             "type": "Unity/Free Open Source",
             "shortDesc": "Couch multiplayer game developed in unity",
             "description": "            <h6>Engine : Unity</h6>            <p>The game's motive is just to serve as many customer as possible in given time period ,There are more additional rules and conditions when serving </p>            <p>This game was developed in just under 7 hours,This is the quickest game that I have developed so far that has most game mechanics and rules. </p>            <p>Features : </p>            <ul class=\"list-group\">              <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Couch Coop</li>              <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Good Game Framework with Async Player State</li>            </ul>",
-            "tileImageUrl": "salad.jpg",
+            "tileImageUrl": "assets/salad.jpg",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,
@@ -95,7 +97,7 @@
             "type": "Unity/Free Open Source",
             "shortDesc": "Clone of popular Flappy bird game developed in unity in less than 6hours",
             "description": "<h6>Engine : Unity</h6>            <p>Clone of popular Flappy bird game developed in unity in less than 6 hours from start to end nothing was pre-planned. </p>            <p>Features : </p>            <ul class=\"list-group\">              <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Perlin Noise based randow pipe spawning</li>              <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Framework enables easy extensiblity</li>              <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Level speed increases as you fly through the level</li>            </ul>",
-            "tileImageUrl": "flappyBird.jpg",
+            "tileImageUrl": "assets/flappyBird.jpg",
             "galleryImgs": [],
             "videoUrl": null,
             "link": "https://drive.google.com/open?id=12ZPTfIMuUCPS060d-qlRUirTRggZEtx8",
@@ -107,11 +109,12 @@
             "type": "Unreal Material Graph",
             "shortDesc": "Cheap and Efficient shader for Cartoony Water Shading",
             "description": " <h6>Engine : Unreal Engine</h6>  <p>This is cheap cartoon themed water shader that I ported to Unreal Engine from Unity Shader created by Erik Roystan    Ross(<a target=\"_blank\" href=\"https://roystan.net/\">https://roystan.net</a>)  </p>  <p>This shader uses two Perlin Noise sampling to create the foam effect combined with Depth texture to create    translucent mask for rendering foam and translucency of water.  </p>  <p>Points to Note : </p>  <ul class=\"list-group\">    <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Used Perlin Noise(Pregenerated) for foam effects</li>    <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Requires Deffered Rendering Pipeline in Unreal as Depth textures are      necessary</li>  </ul>",
-            "tileImageUrl": "toonWaterTile.jpg",
+            "tileImageUrl": "assets/toonWaterTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
+                    "altDesc": "Screenshot of toon water shader in action. The surface near the shore gets different material property than one over greater depth",
                     "imgUrl": "assets/toonWater.jpg"
                 }
             ],
@@ -125,7 +128,7 @@
             "type": "For TCS",
             "shortDesc": "Interactive AR/VR Milling Machine",
             "description": "            <p>The project was created to provide a virtual fully simulated VR and AR Milling Machine to provide              training to beginners who has no knowledge about the mechanical components of heavy machineries.</p>            <p>The VR version supported fully hand controlled mechanical parts where as AR version allows the user to tap on parts to perform specific task examples</p>",
-            "tileImageUrl": "tcsTile.png",
+            "tileImageUrl": "assets/tcsTile.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,
@@ -137,11 +140,12 @@
             "type": "Open Source",
             "shortDesc": "Pin and Barrel cushion distortion simulation",
             "description": "<h6>Graphics API : Vulkan</h6>            <p>Sample project to understand how all post processing stacks works in rendering by using simple Barrel and              Pin cushion distortions on rendered scene. This technic is used to negate the lens distortion caused by HMD in VR rendering.            </p>",
-            "tileImageUrl": "vulkanTile.jpg",
+            "tileImageUrl": "assets/vulkanTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
+                    "altDesc": "Screenshot of simulated VR rendering.",
                     "imgUrl": "assets/vulkan.jpg"
                 }
             ],
@@ -155,7 +159,7 @@
             "type": "For Client",
             "shortDesc": "Erica chat bot features for Bank of America",
             "description": "<p>Project involved adding features to Erica of Bank of America which is a deep learning backed AI based chat bot similar to Siri. Learned a lot about deep learning and NLP(Natural Language processing)</p><br>            <h6>Note :</h6>            <p>All Bank of America logo and related Images belongs to Bank of America. These images in no way relates me              to Bank of America or Bank of America to me </p>",
-            "tileImageUrl": "bankOfAmerica.png",
+            "tileImageUrl": "assets/bankOfAmerica.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": "https://promo.bankofamerica.com/erica/",
@@ -167,7 +171,7 @@
             "type": "For TCS",
             "shortDesc": "A 3D Gamified tickets visualizing system developed using Unity",
             "description": "            <p>This was a gamified approach for viewing issues that gets raised in various application groups and displays those results in an interactive 3D world</p>            <p>All those issues are displayed based on severity in the 3D environment by using dangerous events to represent priority</p>",
-            "tileImageUrl": "tcsTile.png",
+            "tileImageUrl": "assets/tcsTile.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,
@@ -179,11 +183,12 @@
             "type": "Learning Unity",
             "shortDesc": "My first completed game project",
             "description": "<h6>Engine : Unity 5.3f</h6>            <p>My very first completed game project. Game play was very simple just run around the level avoiding burning enemies and shots fired by them and scale obstacles to reach the target.              The game allows point and click movements and space to jump as controls.            </p>            <p>Features : </p>            <ul class=\"list-group\">                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Collectibles & very basic inventory</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Save & Load</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Basic AI</li>                <li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Basic Controls</li>            </ul>",
-            "tileImageUrl": "firstProjectTile.jpg",
+            "tileImageUrl": "assets/firstProjectTile.jpg",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "Screenshot",
+                    "altDesc": "Screenshot of my first game project, I didn't wtf I was doing back then.",
                     "imgUrl": "assets/firstProject.jpg"
                 }
             ],
@@ -197,7 +202,7 @@
             "type": "For Client",
             "shortDesc": "Trade Workflow Management System",
             "description": "<p>This project was to automate the decades old implementation for internal workflow followed in trade. Worked in this project from initial use case analysis to end of maintainence period after production. I was responsible for developing and delivering an entire module which handles automated processing of thousands of trade documents and transactions every day.<br>            Obtained a very good insight on how all the international trade and transactions gets carried out between banks.</p><br><h6>Note :</h6> <p>All Bank of America logo and related Images belongs to Bank of America. These images in no way            relates me to Bank            of            America or Bank of America to me          </p>",
-            "tileImageUrl": "bankOfAmerica.png",
+            "tileImageUrl": "assets/bankOfAmerica.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,
@@ -209,7 +214,7 @@
             "type": "For Client",
             "shortDesc": "Development for Java Middleware Services for Bank of America Online banking portal",
             "description": "<p>This was my first project as professional in TCS. I was tasked with developing              services for bank of america's OLB. <br>I worked in Java and Struts technology to provide highly efficient              API services to UI requests. The programs that I did will be receiving requests from front end and then              based on requests communicates with database              and processes the data to provide proper response back to the frontend. This sounds like a traditional web              request and response, but believe me there is lot happens behing the scene              for each requests and responses.            </p><br>            <h6>Note :</h6>             <p>All Bank of America logo and related Images belongs to Bank of America. These images in no way              relates me to Bank              of              America or Bank of America to me            </p>",
-            "tileImageUrl": "bankOfAmerica.png",
+            "tileImageUrl": "assets/bankOfAmerica.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,
@@ -221,7 +226,7 @@
             "type": "For Client",
             "shortDesc": "Ticketing Virtual Assistant for Command center employee",
             "description": "<p>The app runs in the foreground of delta airline's TCS command center where when ever tickets pops up will              wake up and read out the tickets so that the employee can quickly concentrate on high priority issues</p>            <p>This is a gamification project that I did for Delta airlines and TCS.</p>            <br><h6>Note :</h6>             <p>All Delta Airlines logo and related Images belongs to Delta Airlines. These images in no way relates me              to Delta Airlines or Delta Airlines to me </p>",
-            "tileImageUrl": "deltaTile.png",
+            "tileImageUrl": "assets/deltaTile.png",
             "galleryImgs": [],
             "videoUrl": null,
             "link": null,

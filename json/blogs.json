@@ -1,4 +1,3 @@
-
 {
     "blogs": [
         {
@@ -10,8 +9,7 @@
             "tileImageUrl": null,
             "galleryImgs": [],
             "videoUrl": null,
-            "customLink":
-            {
+            "customLink": {
                 "link": "https://jeslaspravin.github.io/general/2022/01/13/First-Blog/",
                 "dispName": "Read More"
             },
@@ -19,22 +17,57 @@
         },
         {
             "timestamp": 1644580800000,
-            "tags": ["cranberry", "C++", "unicode", "utf", "encoding"],
+            "tags": [
+                "cranberry",
+                "C++",
+                "unicode",
+                "utf",
+                "encoding"
+            ],
             "name": "Unicode and C++",
             "shortDesc": "Experience when converting ASCII string to UTF-8/16/32 string in my engine",
             "description": "<p>The blog provides some very basic explanation on Unicode and how I understood it in detail. I explained why I chose UTF-8 encoding for my engine</p><!--<br>--><p>I also wrote brief overview on UTF encodings and included source code of how I do conversions between various encodings. It also includes the encoding to codepoint conversion codes</p><!--<br>--><p>Some links to pages that helped me greatly when implementing this change is also included in the blog</p>",
-            "tileImageUrl": "unicodesTile.png",
+            "tileImageUrl": "assets/unicodesTile.png",
             "galleryImgs": [
                 {
                     "title": "",
                     "shortDesc": "",
+                    "altDesc": "Generic image with several unicode characters in 2D different orientation",
                     "imgUrl": "assets/unicodes.png"
                 }
             ],
             "videoUrl": null,
-            "customLink":
-            {
+            "customLink": {
                 "link": "https://jeslaspravin.github.io/cranberry/2022/02/11/Unicode-And-CPP/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
+        },
+        {
+            "timestamp": 1696629600000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "vulkan",
+                "3d",
+                "graphics",
+                "rendering"
+            ],
+            "name": "Planning GAL",
+            "shortDesc": "Blog about design plans and decision when creating the GAL for the Cranberry game engine",
+            "description": "<p>I started planning the rework of the cranberry game engine's graphics API abstraction</p><!--<br>--><p>In this blog I write the decision I made when designing the initial portion of the Graphics Abstraction Layer(GAL)</p><!--<br>--><p>I will expand this page with additional planning as I progress through the implementations. For the actual implementation, I will try to blog it as separate pages.</p>",
+            "tileImageUrl": "assets/genericPlanningTile.jpg",
+            "galleryImgs": [
+                {
+                    "title": "",
+                    "shortDesc": "",
+                    "altDesc": "Generic image representing planning something",
+                    "imgUrl": "assets/genericPlanning.jpg"
+                }
+            ],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://jeslaspravin.github.io/cranberry/2023/10/07/Planning-GAL",
                 "dispName": "Read More"
             },
             "gitLink": null

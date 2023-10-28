@@ -1,0 +1,10 @@
+Cranberry_GAL:
+  - title: "Step 1: Planning"
+    url: "/cranberry/2023/10/07/Planning-GAL/"
+    children:
+      - title: "Initial Plan"
+        url: "/cranberry/2023/10/07/Planning-GAL#build-system-changes"
+      - title: "GAL Entrypoints"
+        url: "/cranberry/2023/10/07/Planning-GAL/#gal-entrypoints-concept"
+      - title: "Future"
+        url: "/cranberry/2023/10/07/Planning-GAL/#future"
