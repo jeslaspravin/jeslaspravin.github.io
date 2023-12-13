@@ -1,7 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHandler
 from socketserver import TCPServer
 import json
-import cgi
 import os
 from pathlib import Path
 
