@@ -29,7 +29,7 @@ description: >-
   Hello, This site will be the host of all my blogs that I hope to write.
   I am looking forward to blog anything that I find interesting and would like to revisit when ever I wish to.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jeslaspravin.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blogs.jeslaspravin.com/" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:categories/:year/:month/:day/:title/
 repository: "jeslaspravin/jeslaspravin.github.io"
 twitter_username: jeslus
@@ -131,7 +131,6 @@ plugins:
   - jekyll-include-cache
   - webrick
   - jekyll-feed
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

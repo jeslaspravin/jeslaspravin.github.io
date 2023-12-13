@@ -50,6 +50,6 @@ I am sincerely planning to create more such a blog posts. Right now I have in mi
 
 [//]: # (Below are link reference definitions)
 [my webpage]: http://jeslaspravin.com
-[my blogs page]: https://jeslaspravin.github.io
+[my blogs page]: https://blogs.jeslaspravin.com/
 [github-pages]: https://pages.github.com/
 [jekyll]: https://jekyllrb.com/

@@ -215,9 +215,9 @@ This allocator should be a stack allocator in principle. However it is easier to
 
 The GAL layer will anyway be called from renderer only and the renderer is the one managing all the allocations. So the best approach for local scope is to use a thread local `ArenaAllocator` that gets reclaimed after the call returns to renderer.
 
-### Comman pool scope
+### Command pool scope
 
-Again `ArenaAllocator` per command pool could be used and cleared/reclaimed when the pool is reset.
+Again `ArenaAllocator` per command pool could be used and cleared/reclaimed when the pool is reset. `ArenaAllocator` is suitable only because I plan to create per frame pool for each thread. If in future I decide to use only a pool per thread then I must modify the allocator to be `RingBuffer`, but it is okay to have separate pool per frame.
 
 ### Objects/Resources scope
 

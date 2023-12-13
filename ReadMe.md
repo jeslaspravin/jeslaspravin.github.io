@@ -10,6 +10,10 @@ bundle exec jekyll serve
 bundle exec jekyll serve
 ```
 
+## Notes on Ruby
+
+* When updating ruby it is better to reinstall new one, follow the jekyll setup page. Delete Gemfile.lock. Then do `bundle install`.
+
 ## Notes on Jekyll
 
 * Understand permalink and links here <https://mademistakes.com/mastering-jekyll/how-to-link/>
