@@ -95,11 +95,11 @@ This section specify how the calls must be forwarded to the respective Graphics 
 
 The calls to GAL can be directed to the respective Graphics layer and its API using one of the following solution.
 
-| # | Solution                          | Number of indirections                                |
-| - | --------------------------------- | ----------------------------------------------------- |
-| 1 | Virtual Table                     | 1 random offset + 1 instruction jump(Best case)       |
-| 2 | C Style function pointer array    | 1 array offset + 1 instruction jump(Best case)        |
-| 3 | C++ template specialization       | 1 switch + 1 instruction jump(Non LTO)(Worst case)    |
+| # | Solution                          | Number of indirections                                                        |
+| - | --------------------------------- | ----------------------------------------------------------------------------- |
+| 1 | Virtual Table                     | 1 Random addr offset + 2 addr offset + 1 branch linked jump(Best case)        |
+| 2 | C Style function pointer array    | 1 addr offset + 1 branch linked jump(Best case)                               |
+| 3 | C++ template specialization       | 1 switch(Case count - 1 jumps) + 1 branch linked jump(Non LTO)(Worst case)    |
 
 > I decided to go with the 3rd option as it
 >
