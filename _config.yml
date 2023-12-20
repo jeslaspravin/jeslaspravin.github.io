@@ -90,24 +90,30 @@ author:
     - label: "My Webpage"
       icon: "fas fa-fw fa-link"
       url: "http://jeslaspravin.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/jeslus"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jeslaspravin"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.gamedev.place/@jeslas"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jeslus"
 # footer
 footer:
   links:
     - label: "My Webpage"
       icon: "fas fa-fw fa-link"
       url: "http://jeslaspravin.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/jeslus"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.gamedev.place/@jeslas"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jeslaspravin"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jeslus"
 # defaults
 defaults:
   # _posts
