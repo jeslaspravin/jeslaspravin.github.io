@@ -114,6 +114,10 @@ footer:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/jeslus"
+      
+after_footer_scripts:
+  # Script from https://github.com/libgdx/libgdx.github.io/blob/8d30722aa21b4680a3e9b75108fdd0d9aedf0639/assets/js/clipboard.js
+  - assets/js/clipboard.js
 # defaults
 defaults:
   # _posts

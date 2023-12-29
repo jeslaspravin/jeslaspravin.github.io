@@ -4,6 +4,8 @@ title:  "Planning GAL"
 date:   2023-10-06
 excerpt: "Determining the scope of the GAL"
 mathjax: true
+codecopying: true
+mermaid: true
 categories: 
     - cranberry
 header:
@@ -135,6 +137,40 @@ class Instance_FS1
 };
 ```
 
+<div class="mermaid">
+classDiagram
+
+`gal::Context` <|.. `gal::DriverApiContext~EDriverApi~`
+`gal::DriverApiContext~EDriverApi~` <|.. `gal::VulkanApiContext`
+`gal::DriverApiContext~EDriverApi~` <|.. `gal::D3d12ApiContext`
+note for `gal::Context` "This context will contains the device and instance information.\nThe corresponding API context will contain API specific resource and functions"
+
+`gal::ContextFs1` <|.. `gal::DriverApiContextFs1~EDriverApi~`
+`gal::DriverApiContextFs1~EDriverApi~` <|.. `gal::VulkanApiContextFs1`
+`gal::DriverApiContextFs1~EDriverApi~` <|.. `gal::D3d12ApiContextFs1`
+note for `gal::ContextFs1` "Feature set contains functions that corresponds to features this set supports,\nalso copies of any data that is necessary to work on the feature"
+class `gal::Context` {
+    #Device device
+    #Array~ResourcePool~ pools
+    #SomeLimit limits
+    +setupSomeThingWithinLimits(int32) void
+    +constructDevice() void
+    +destructDevice() void
+    +createResource() ResourceHandle
+    +destroyResource(ResourceHandle) void
+    +cmdSomeCommand(CommandHandle) void
+}
+class `gal::ContextFs1` {
+    #Device *device
+    #ResourcePool *pools
+    #ASLimit accStructLimit
+    +setupStaticAccelerationStructs(...) void
+    +createFancyResource() FancyResourceHandle
+    +destroyFancyResource(FancyResourceHandle) void
+    +cmdSomeFancyCommand(CommandHandle) void
+}
+</div>
+
 ### Entry points to Vulkan API calls
 
 I have decided to use the same `VulkanFunctions.inl` inline file(Same as current `VulkanRHI`) combined with macros to load all the vulkan functions.
@@ -256,6 +292,7 @@ There are benifits and drawbacks with this approach of having occupancy bits tog
 The block chunk with 128 slots will be in following layout
 
 |   Header   |           |     |             |
+| ---------- | --------- | --- | ----------- |
 | uint64     | uint64    |     |             |
 | gen idx 0  | gen idx 1 | ... | gen idx 127 |
 | Slot 0     | Slot 1    | ... | Slot 127    |
