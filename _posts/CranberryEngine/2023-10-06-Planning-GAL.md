@@ -1,10 +1,9 @@
 ---
 layout: single
-title:  "Planning GAL"
+title:  "[WIP]Planning GAL"
 date:   2023-10-06
 excerpt: "Determining the scope of the GAL"
 mathjax: true
-codecopying: true
 mermaid: true
 categories: 
     - cranberry
@@ -162,7 +161,7 @@ class `gal::Context` {
 }
 class `gal::ContextFs1` {
     #Device *device
-    #ResourcePool *pools
+    #ResourcePool*pools
     #ASLimit accStructLimit
     +setupStaticAccelerationStructs(...) void
     +createFancyResource() FancyResourceHandle
@@ -300,3 +299,5 @@ The block chunk with 128 slots will be in following layout
 ## Future
 
 First I will implement the above planned struct and will append to this article as needed.
+
+[//]: # (Below are link reference definitions)

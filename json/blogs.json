@@ -71,6 +71,30 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1705190400000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "vulkan",
+                "3d",
+                "graphics",
+                "rendering",
+                "image",
+                "buffer",
+                "memory"
+            ],
+            "name": "GAL resource and memory",
+            "shortDesc": "This post will cover how I am going to abstract the graphics layer for any resources(Images, Buffers) that require memory",
+            "description": "<p>This post will cover how I am going to abstract the graphics layer for any resources(Images, Buffers) that require memory.<!--<br>-->The main point of interest/question I have right now is, How do I abstract the resource creation, memory allocation, and memory binding?<!--<br>-->Then there is sparse memory binding backed by hardware features. Which albeit slow right now, but worth considering.</p><!--<br>--><p>Summarizing the points/questions below : </p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Should the abstraction layer allow creating resource and binding memory separately?</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Should the abstraction layer allow the creation of resources with memory bound?</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Should I start with sparse memory support from the start? If I do how does it work across different APIs?</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Should the memory allocations be managed in the GAL layer? If yes should the memory management be implemented at the per-driver API level or GAL level inside GAL?</li><!--<br>--></ul>",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/01/14/GAL-Resource-And-Memory/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }
