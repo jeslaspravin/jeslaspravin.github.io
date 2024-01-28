@@ -7,6 +7,8 @@ mathjax: true
 mermaid: true
 categories: 
     - cranberry
+header:
+    teaser: /assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg   
 sidebar:
     nav: "Cranberry_GAL"
 ---

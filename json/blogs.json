@@ -95,6 +95,41 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1706396400000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "vulkan",
+                "3d",
+                "graphics",
+                "rendering",
+                "renderpass",
+                "framebuffer",
+                "pipeline",
+                "compute",
+                "shader",
+                "compiler"
+            ],
+            "name": "GAL render pass, framebuffer, pipelines and descriptors",
+            "shortDesc": "Managing compatibility between render passes, pipelines, and framebuffers. Also future plans for GAL user layer, GAL helper libraries",
+            "description": "<p>Managing compatibility between render passes, pipelines, and framebuffers can be challenging. Creating a descriptor layout and using it to create pipelines can also be difficult. Allocating descriptors from the descriptor pool and ensuring that they are fully compatible with the pipeline can be another challenge. Supporting additional features like bindless and buffer memory addressing can further complicate the process.</p><!--<br>--><p>A nice image depicting the relation between various vulkan objects. Answers, how to handle this level of complexity?</p><!--<br>--><p>Has some write ups of following topics:</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Render pass</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Framebuffer</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Pipeline layout and Descriptors sets</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Framebuffer attachments</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Pipelines</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shader compiler</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">GAL helper libraries</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg",
+            "galleryImgs": [
+                {
+                    "title": "ERD Renderpass, Pipeline, Framebuffer, Descriptors",
+                    "shortDesc": "Entity relation diagram",
+                    "altDesc": "Entity relation diagram of Renderpass, Pipeline, Framebuffer, Descriptors",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg"
+                }
+            ],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }
