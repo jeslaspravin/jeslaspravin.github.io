@@ -118,8 +118,8 @@
             "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg",
             "galleryImgs": [
                 {
-                    "title": "ERD Renderpass, Pipeline, Framebuffer, Descriptors",
-                    "shortDesc": "Entity relation diagram",
+                    "title": "",
+                    "shortDesc": "",
                     "altDesc": "Entity relation diagram of Renderpass, Pipeline, Framebuffer, Descriptors",
                     "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg"
                 }
