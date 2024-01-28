@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "[WIP]Planning GAL"
+title:  "Planning GAL"
 date:   2023-10-06
 excerpt: "Determining the scope of the GAL"
 mathjax: true
@@ -15,8 +15,15 @@ sidebar:
 
 ## Graphics Abstraction Layer(GAL)
 
+{: .notice--warning}
+**Attention**{: .notice-warn-header} Work in progress
+
 Graphics abstraction layer is going to be the light weight abstraction on top of Graphics APIs like Vulkan, DirectX, Metal etc., of Cranberry engine.
 This page will contain some rough abstract of the plan. It is not complete or fool proof and mostly just mental model. I have no working code at this point.
+
+{: .notice--info}
+**Note**{: .notice-info-header}
+Throughout this GAL series of blogs, I will be using the Vulkan type names and engine type names interchangeably. This is just because I did this initial plan with Vulkan in mind and D3D12 as a second reference.
 
 ### Goals
 

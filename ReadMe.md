@@ -30,6 +30,8 @@ toc_label: "My Table of Contents"
 toc_icon: "cog"
 ```
 
+* More on overrideable scss variables check files at <https://github.com/mmistakes/minimal-mistakes/tree/master/_sass>
+
 ## Kramdown
 
 * All kramdown specific tricks works here as well

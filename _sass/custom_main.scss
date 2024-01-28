@@ -1,0 +1,53 @@
+.page__content {
+    text-align: justify;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.emphasis {
+    display: block;
+    font-weight: bold;
+    text-shadow: $border-color 2px 0px 5px;
+}
+
+%blog-icon-base {
+    font-family: "Font Awesome 5 Free";
+    padding-right: 0.3em;
+}
+
+%notice-header-base {
+    padding: 0em 0.2em 0em 0em;
+    display: block;
+}
+
+.notice-info-header {
+    @extend %notice-header-base;
+    color: turquoise;
+}
+
+.notice-info-header::before {
+    @extend %blog-icon-base;
+    content: "\f06a";
+}
+
+.notice-warn-header {
+    @extend %notice-header-base;
+    color: yellow;
+}
+
+.notice-warn-header::before {
+    @extend %blog-icon-base;
+    content: "\f071";
+}
+
+.notice-danger-header {
+    @extend %notice-header-base;
+    color: red;
+}
+
+.notice-danger-header::before {
+    @extend %blog-icon-base;
+    content: "\f057";
+}

@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "[WIP]GAL resource and memory"
+title:  "GAL resource and memory"
 date:   2024-01-14
 excerpt: "How the resource creation and memory binding API might look like"
 mathjax: true
@@ -11,6 +11,9 @@ sidebar:
 ---
 
 ## GAL Resources
+
+{: .notice--warning}
+**Attention**{: .notice-warn-header} Work in progress
 
 This post will cover how I am going to abstract the graphics layer for any resources(Images, Buffers) that require memory.
 The main point of interest/question I have right now is, How do I abstract the resource creation, memory allocation, and memory binding?

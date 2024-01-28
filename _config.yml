@@ -83,9 +83,10 @@ author:
   name: "Jeslas Pravin"
   avatar: "/assets/images/SIGN8392_focused.jpg"
   bio: >-
-    "`Game and Game Engine programmer` with good knowledge and understanding in graphics programming using `Vulkan` API. I love `C++`(Maybe because I have not tried Rust or Zig).
+    "`Game and Game Engine programmer`, now `optimization engineer` in graphics driver team. 
+     I do graphics programming using `Vulkan` API. I enjoy programming using `C++`(Maybe because I have not tried Rust or Zig).
      I like metaprogramming with templates in my solo project only"
-  location: "Berlin, Germany"
+  location: "Trondheim, Norway"
   links:
     - label: "My Webpage"
       icon: "fas fa-fw fa-link"
@@ -114,10 +115,16 @@ footer:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/jeslus"
-      
+
 after_footer_scripts:
   # Script from https://github.com/libgdx/libgdx.github.io/blob/8d30722aa21b4680a3e9b75108fdd0d9aedf0639/assets/js/clipboard.js
   - assets/js/clipboard.js
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
 # defaults
 defaults:
   # _posts

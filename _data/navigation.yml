@@ -1,12 +1,14 @@
 Cranberry_GAL:
-  - title: "Step 1: Planning"
+  - title: "Step 1: Planning GAL"
     url: "/cranberry/2023/10/06/Planning-GAL/"
     children:
       - title: "Initial Plan"
         url: "/cranberry/2023/10/06/Planning-GAL/#build-system-changes"
-      - title: "GAL Entrypoints"
+      - title: "Entrypoints"
         url: "/cranberry/2023/10/06/Planning-GAL/#gal-entrypoints-concept"
       - title: "Future"
         url: "/cranberry/2023/10/06/Planning-GAL/#future"
-      - title: "GAL Resource and Memory"
+      - title: "Resource and Memory"
         url: "/cranberry/2024/01/14/GAL-Resource-And-Memory"
+      - title: "RenderPass, Pipelines and Descriptors"
+        url: "/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors"
