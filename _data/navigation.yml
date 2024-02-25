@@ -11,4 +11,6 @@ Cranberry_GAL:
       - title: "Resource and Memory"
         url: "/cranberry/2024/01/14/GAL-Resource-And-Memory"
       - title: "RenderPass, Pipelines and Descriptors"
-        url: "/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors"
+        url: "/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors-Shaders"
+      - title: "Shader compiler"
+        url: "/cranberry/2024/02/03/ShaderCompiler/"

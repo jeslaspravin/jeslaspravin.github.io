@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "GAL render pass, framebuffer, pipelines and descriptors"
+title:  "GAL render pass, framebuffer, pipelines, descriptors and shaders"
 date:   2024-01-27
 excerpt: "Creating pipelines and descriptors set with compatible render pass and pipeline layouts!"
 mathjax: true
@@ -106,7 +106,7 @@ So when it comes to shader the pipeline create info must have fields to receive 
 
 Along with the shader code, the common shader stage-related data such as per stage entry points, shader stage type, and specialization information must be provided. How the common and API-specific data are arranged must be decided when implementing to make it as optimal as possible.
 
-I assume(Not checked) specialization constant([VkSpecializationInfo]) is unique to vulkan and it must be part of vulkan unique data as well? but since the layer above GAL is going to be a api agnostic layer. I am going to use specialization constant anyway and convert the specialization constant to uniforms in D3D when I add D3D support. The issue to track native specialization constant support in hlsl <https://github.com/microsoft/hlsl-specs/issues/16>.
+I assume(Not checked) specialization constant([VkSpecializationInfo]) is unique to vulkan and it must be part of vulkan unique data as well? but since the layer above GAL is going to be a api agnostic layer. I am going to use specialization constant anyway and ~~convert the specialization constant to uniforms in D3D when I add D3D support~~ replace specialization constant with constant directly replaced inside DXIL bytecode(Refer []). The issue to track native specialization constant support in hlsl <https://github.com/microsoft/hlsl-specs/issues/16>.
 
 ```cpp
 /* API Agnostic data and code */ 
@@ -279,6 +279,14 @@ Each shader might use each of these descriptors the way they see fit. So user la
 
 Once all of the above is done I will have a working and extensible GAL, shader compiler, and a renderer user layer for my engine.
 
+## Updates(25 February 2024)
+
+It looks like there is better way(Hack) to support specialization constant in D3D. The follwoing solutions were explored by kind folks from [Godot] and shared here [NIR based solution] and [Godot Talk-Vulkanised 2024].
+
+- Using direct constant replacement to DXIL(LLVM IR) where you basically replace the specialization constant load with `volatile int` and load to make sure that DXC would not optimize the code away. Then when generating DXIL for the first time replace all the volatile int and load with just constant. Note down the code offset into which the constant has to be replaced during the pipeline compilation. More details here [DXIL modification for SC tweet]
+
+- Using Mesa's NIR to convert SPIRV to DXIL. This requires changes in Mesa's NIR from SPIRV code to allow runtime patchable DXIL(ie keep the code and branch from getting optimized away). However at this point without looking at Mesa's code I am not quite understand why certain things are done the way it is. [NIR base soln tweet]
+
 [//]: # (Below are link reference definitions)
 
 [VkRenderPassCreateInfo]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkRenderPassCreateInfo.html
@@ -288,3 +296,8 @@ Once all of the above is done I will have a working and extensible GAL, shader c
 [VkDescriptorPoolCreateInfo]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolCreateInfo.html
 [VkSpecializationInfo]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSpecializationInfo.html
 [VkGraphicsPipelineCreateInfo]: https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGraphicsPipelineCreateInfo.html
+[Godot]: https://godotengine.org/
+[NIR based solution]: https://godotengine.org/article/d3d12-adventures-in-shaderland/
+[Godot Talk-Vulkanised 2024]: https://youtu.be/j1SH1gL7E6A?t=1278
+[DXIL modification for SC tweet]: https://twitter.com/RandomPedroJ/status/1532725156623286272
+[NIR base soln tweet]: https://twitter.com/RandomPedroJ/status/1646919825485168640
