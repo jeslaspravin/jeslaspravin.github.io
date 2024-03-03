@@ -130,6 +130,31 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1706396400000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "token",
+                "compiler",
+                "language",
+                "json",
+                "toml",
+                "config",
+                "data"
+            ],
+            "name": "Basic tokenizer",
+            "shortDesc": "Basic tokens parser helper functions",
+            "description": "<p>The tokenizer that I am about to create will contained inside a parser helper class. This is the first version of general purpose tokenizer. It is created to allow parsing my custom text based config format.</p><!--<br>--><p>This blog writes up some insight behind the decisions I made. It might be incorrect choice but these are the current decision.</p><!--<br>--><p>Some features to be included in this intial version:</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multipass</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Running a pass is caller's choice</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/compiler_tokenizer_cartoon.jpg",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/03/03/Basic-Tokenizer/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }
