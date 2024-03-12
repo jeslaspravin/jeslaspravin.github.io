@@ -17,18 +17,18 @@ The tokenizer I’m about to create will be contained within a parser helper cla
 The language draws inspiration from `JSON`, but instead of using arrays and objects, it focuses solely on scopes. These scopes carry semantic meaning within the configuration. Although the language doesn’t directly support arrays, it allows for array-like behavior by using `+` and `-` symbols.
 
 - Scopes and Semantics:
-  - Unlike `JSON`, which has arrays and objects, your language focuses solely on scopes.
-  - These scopes carry semantic meaning within your configuration.
+  - Unlike `JSON`, which has arrays and objects, the language focuses solely on scopes.
+  - These scopes carry semantic meaning within the configuration.
   - The absence of arrays and objects simplifies the structure.
 - Data Storage with Arrays:
-  - While the language doesn't directly support arrays, you've cleverly enabled array-like behavior using `+` and `-`.
-  - This allows for efficient storage of data, even though the language doesn't explicitly define arrays.
+  - While the language doesn't directly support arrays, It enables array-like behavior using `+` and `-`.
+  - This allows for efficient parsing of data.
 - Copying Values:
   - The ability to copy values from one scope to another is a powerful feature.
-  - You achieve this through evaluated assignment (`:=`).
+  - It is achieved through evaluated assignment (`:=`).
   - It's like creating references or aliases to existing data.
 - Path Separators:
-  - Instead of the common `.` separator for scopes, your language opts for `/`.
+  - Instead of the common `.` separator for scopes, the language opts for `/`.
   - This choice aligns with path-like semantics, making it intuitive for users.
 
 Example
@@ -122,7 +122,7 @@ copyList+:=/scopeOuter1/innerList # Append entire list
 ```
 
 {: .emphasis}
-From the example there are following basic tokens
+From the example these are the basic tokens
 
 - Assignment token
   - `=`
