@@ -10,14 +10,26 @@ header:
 ---
 ## Basic tokens parser
 
-The tokenizer that I am about to create will contained inside a parser helper class. This is the first version of general purpose tokenizer.
-It is created to allow parsing my custom text based config format. So first I will specify the semantics of the config language.
+The tokenizer I’m about to create will be contained within a parser helper class. This initial version serves as a general-purpose tokenizer and is designed to parse my custom text-based configuration format. Let’s start by specifying the semantics of the config language.
 
 ### CBE Config language
 
-The language takes inspiration from `JSON` but instead of having arrays and objects. This one will have only scopes semantically. However the data itself must allow storing arrays, it is achieved using `+` and `-`. The language also allows copying values from another scope it can be achieved by using evaluated assignment `:=` of any value, list indexing must be allowed when copying.
+The language draws inspiration from `JSON`, but instead of using arrays and objects, it focuses solely on scopes. These scopes carry semantic meaning within the configuration. Although the language doesn’t directly support arrays, it allows for array-like behavior by using `+` and `-` symbols.
 
-There is also another difference instead of using `.` separator for scopes, This language will use `/` like path separator.
+- Scopes and Semantics:
+  - Unlike `JSON`, which has arrays and objects, your language focuses solely on scopes.
+  - These scopes carry semantic meaning within your configuration.
+  - The absence of arrays and objects simplifies the structure.
+- Data Storage with Arrays:
+  - While the language doesn't directly support arrays, you've cleverly enabled array-like behavior using `+` and `-`.
+  - This allows for efficient storage of data, even though the language doesn't explicitly define arrays.
+- Copying Values:
+  - The ability to copy values from one scope to another is a powerful feature.
+  - You achieve this through evaluated assignment (`:=`).
+  - It's like creating references or aliases to existing data.
+- Path Separators:
+  - Instead of the common `.` separator for scopes, your language opts for `/`.
+  - This choice aligns with path-like semantics, making it intuitive for users.
 
 Example
 
@@ -143,7 +155,7 @@ From the example there are following basic tokens
   - Encapsulate a scope section
 
 {: .emphasis}
-Additional tokens like variable names, text concat across lines can be obtained from second semantic token pass.
+During the second semantic token pass, additional tokens such as variable names, text concatenation across lines, multiline string values, and numbers can be extracted.
 
 - Variable assignment semantics
   - Regex pattern `R'^[a-zA-Z_]{1}[a-zA-Z0-9_]*'`
@@ -177,7 +189,7 @@ Additional tokens like variable names, text concat across lines can be obtained 
   - `VarName` [`Add`, `Remove`] `Assignment` `Regex`
 
 {: .emphasis}  
-Third pass is scoping pass where all the scopes are validated.
+The third pass involves a scoping check, where all the scopes are validated.
 
 In our case there are only three scopes
 
@@ -185,10 +197,10 @@ In our case there are only three scopes
 - Scope section `{...}`
 - Text `"..."` `'...'`
 
-This pass must receive the entire list of scope tokens, validates the scopes.
+This pass must receive the entire list of scope tokens, validate the scopes.
 
 {: .emphasis}
-The fourth pass is verifying the semantic's gramatical correctness. This involves checking if each sentence or semantic is matching one of the grammer provided. If it does not match the closest matching grammer and range must be returned with result. This is necessary for clear error reporting.
+The fourth step involves verifying the semantic and grammatical correctness. During this phase, we check whether each sentence or semantic aligns with the provided grammar. If it does not match the closest matching grammar, we return the relevant range along with the result. This step is crucial for clear error reporting.
 
 This example is very simple so the list of grammers are
 
@@ -201,18 +213,38 @@ This example is very simple so the list of grammers are
 
 ## Defining the requirement for the helpers
 
-- The parser helper will only work with `StringView`. Do not modify the source itself.
-- Basic tokenizer is simple receives a bunch of `token characters` or `regex` or `token strings`. All case sensitive. Tokenizes the StringView and constructs a linear array of results ordered in same order the tokens appear in source string.
-- Semantic tokenizer starts to get complex. It receives a bunch of semantics that contains list of tokens, regexes and sub semantics(Like sub expressions in regex). All the marked regexes of the non tokenized region gets tokenized here.
-- Scope validation checks all the scope able tokens and ensure that they are valid pairs.
-- Scoping pass groups all the tokens into its corresponding scoping region. Works with array ranges(Not `std::ranges`).
-- Grammer check pass receive bunch of regexes and tokens like semantic tokenizer, checks the grammatical correctness.
-- Additional getters and setters to get the data needed from parsed outputs.
+1. **Parser Helper**:
+   - The parser helper exclusively works with `StringView`. It's essential to avoid modifying the source itself.
+
+2. **Basic Tokenizer**:
+   - The basic tokenizer is straightforward. It receives a set of inputs, which can be either:
+     - `token characters`
+     - `regex`
+     - `token strings`
+   - All of these are case-sensitive. The tokenizer processes the `StringView` and constructs a linear array of results, maintaining the order in which the tokens appear in the source string.
+
+3. **Semantic Tokenizer**:
+   - The semantic tokenizer introduces complexity. It receives a collection of semantics, each containing:
+     - A list of tokens
+     - Regular expressions (regexes)
+     - Sub-semantics (similar to sub-expressions in regex)
+   - Notably, it tokenizes the marked regexes within non-tokenized regions.
+
+4. **Scope Validation**:
+   - This step checks all scope-able tokens to ensure they form valid pairs.
+
+5. **Scoping Pass**:
+   - During the scoping pass, tokens are grouped into their corresponding scoping regions. This process operates with array ranges (not `std::ranges`).
+
+6. **Grammar Check Pass**:
+   - Similar to the semantic tokenizer, the grammar check pass receives a set of regexes and tokens. Its purpose is to verify grammatical correctness.
+
+7. **Additional Getters and Setters**:
+   - These functions allow retrieval of necessary data from the parsed outputs.
 
 ### Pass 1 - Basic tokens
 
-Basic tokens just need to know the input `StringView`. List of tokens, its type and pattern to match.
-The structure might look like. The output will be list of `ParseTokens`
+**Basic tokens** simply require knowledge of the input `StringView`. You provide a list of tokens, along with their type and matching pattern. The resulting structure might resemble the following, yielding a list of `ParseTokens`.
 
 ```cpp
 using TokenType = uint32;
@@ -269,7 +301,7 @@ struct ParsedTokens
 
 ### Pass 2 - Semantic tokens
 
-This pass requires the previously created list of `ParsedTokens` as input and output. Input is list of grammar as list of `SemanticSentance`. Both subexpressions and token patterns are supported in addition to other pattern types.
+This step relies on the **previously generated list of `ParsedTokens`** as both input and output. The input consists of a grammar list represented by a collection of `SemanticSentences`. Notably, this grammar supports various elements, including subexpressions, token patterns, and other pattern types.
 
 ```cpp
 struct SemanticTokenDesc
@@ -289,7 +321,7 @@ struct SemanticSentenceDesc
 
 ### Pass 3 - Scope validation
 
-Receives list of scope tokens and validates if the scopes are complete. Input must be list of `ParsedTokens` and list of `ScopeTokens`. The errors are returned in list of `ParseError`.
+This step **validates the completeness of scope tokens**. The input consists of a list of `ParsedTokens` and a list of `ScopeTokens`. Any errors encountered during validation are returned as a list of `ParseError` objects.
 
 ```cpp
 struct ScopeTokenDesc
@@ -314,8 +346,7 @@ struct ParseError
 
 ### Pass 4 - Scoping the tokens
 
-Receives list of scope tokens similar to pass 3 and groups the subtokens into it. Input must be list of `ParsedTokens` and list of `ScopeTokens`. The errors are returned in list of `ParseError`. Also returns list of `TokensGroup` which contains the `ParsedTokens` range which are inside a scope.
-This functionality could be combined with Pass 3 to group conditionally.
+This function takes in a list of scope tokens, similar to pass 3. It then groups the subtokens within those scopes. The input consists of two lists: one containing `ParsedTokens` and the other containing `ScopeTokens`. Any errors encountered during this process are returned as a list of `ParseError`. Additionally, the function returns a list of `TokensGroup`, which contains the ranges of `ParsedTokens` that fall within a specific scope. This functionality can be combined with Pass 3 to conditionally group tokens.
 
 ```cpp
 struct TokensGroup
@@ -332,7 +363,7 @@ struct TokensGroup
 
 ### Pass 5 - Grammer check
 
-Checks the grammatical correctness and returns the errors if any as list of `ParseError`. Input is list of `SentenceGrammar`, `ParsedTokens` and `TokensGroup`. Also returns list of `GrammarMatchesPerGroup` for each `SentenceGrammar` inside each group.
+This function **verifies the grammatical correctness** and identifies any errors. It takes as input a list of `SentenceGrammar`, `ParsedTokens`, and `TokensGroup`. Additionally, it returns a list of `GrammarMatchesPerGroup` for each `SentenceGrammar` within each group.
 
 ```cpp
 struct WordGrammarDesc
@@ -360,41 +391,49 @@ struct GrammarMatchesPerGroup
 
 ### Helpers
 
-While contemplating all conceivable combinations of sentence semantics, I swiftly recognized the necessity for an improved approach. Consequently, I devised the following helper functions to handle these combinations. Notably, the code generation occurs during compile time, while the data population takes place at program startup.
+While contemplating all conceivable combinations of sentence semantics, I swiftly recognized the necessity for an improved approach. Consequently, I devised the following helper functions to handle these combinations. Notably, the code generation and data population occurs during compile time. I have also added a few combinations of the `fillCombinations` and `createCombinations` functions to work with dynamic and static data.
 
 ```cpp
-template <typename T, SizeT Extent, SizeT Rank, typename... TCombos>
-constexpr static void createCombinations(T (&arr)[Extent][Rank], TCombos &&...combos)
+/**
+* The elements in an array gets distributed from first to last. So the one in lesser index gets checked first when parsing.
+* Uses plain array or std::array as input combos and returns std::array.
+* Meant to be used to generate combinations entirely at compile time.
+*/
+template <ConstSizeArray... TCombos>
+constexpr static auto createCombinations(TCombos &&...combos)
 {
-    static_assert(Rank == sizeof...(combos), "Rank mismatch when creating combination");
-    static_assert(std::conjunction_v<std::is_array<std::remove_cvref_t<TCombos>>...>, "All combinations must be an array");
-    static_assert(
-        std::conjunction_v<std::is_same<std::remove_all_extents_t<std::remove_cvref_t<TCombos>>, T>...>,
-        "All combinations must be of same type as out array"
-    );
+    constexpr SizeT EXTENT = COMBO_EXTENT<TCombos...>;
+    constexpr SizeT RANK = COMBO_RANK<TCombos...>;
+    using Type = ComboHelper<std::remove_cvref_t<TCombos>...>::type;
 
-    for (SizeT i = 0; i < Extent; ++i)
+    std::array<std::array<Type, RANK>, EXTENT> outArr;
+    for (SizeT i = 0; i < EXTENT; ++i)
     {
-        createCombos(std::index_sequence_for<TCombos...>{}, arr[i], i, std::forward<TCombos>(combos)...);
+        outArr[i]
+            = createCombosArray<decltype(outArr)::value_type>(std::index_sequence_for<TCombos...>{}, i, std::forward<TCombos>(combos)...);
     }
+    return outArr;
 }
 
-template <SizeT idx, SizeT... idxs, typename T, SizeT Rank, SizeT N, typename... TCombos>
-constexpr static void
-createCombos(std::index_sequence<idx, idxs...>, T (&arr)[Rank], SizeT comboIdx, const T (&combo)[N], TCombos &&...combos)
+template <ConstSizeArray T, SizeT... idxs, ConstSizeArray... TCombos>
+constexpr static T createCombosArray(std::index_sequence<idxs...>, SizeT comboId, TCombos &&...combos)
 {
-    static_assert(sizeof...(combos) == sizeof...(idxs), "Something is VERY wrong!");
+    constexpr SizeT EXTENT = ComboHelper<T>::extent;
+    static_assert(sizeof...(combos) == sizeof...(idxs) && sizeof...(combos) == EXTENT, "Something is VERY wrong!");
+    SizeT comboIds[EXTENT] = { ComboHelper<std::remove_cvref_t<TCombos>>::extent... };
+    /* Since left most must be the largest rank and varying slowly. This order keeps the similar matches grouped together */
+    for (int64 i = 0; i < EXTENT; ++i)
+    {
+        SizeT stride = 1;
+        for (int64 ii = i + 1; ii < EXTENT; ++ii)
+        {
+            stride *= comboIds[ii];
+        }
+        comboIds[i] = comboId / stride;
+        comboId %= stride;
+    }
 
-    if constexpr (sizeof...(combos) != 0)
-    {
-        constexpr static const SizeT STRIDE = COMBO_EXTENT<std::remove_cvref_t<TCombos>...>;
-        createCombos(std::index_sequence<idxs...>{}, arr, comboIdx % STRIDE, std::forward<TCombos>(combos)...);
-        arr[idx] = combo[comboIdx / STRIDE];
-    }
-    else
-    {
-        arr[idx] = combo[comboIdx];
-    }
+    return { combos[comboIds[idxs]]... };
 }
 ```
 
@@ -403,8 +442,7 @@ createCombos(std::index_sequence<idx, idxs...>, T (&arr)[Rank], SizeT comboIdx, 
 I believe the design outlined above is sufficient for parsing my configuration language using my versatile parser helpers. Leveraging this generic parser and tokenizer, I can effortlessly tokenize my JSON-like language. Furthermore, extending the semantics and grammar proved to be a straightforward task. 🚀
 
 ```cpp
-// 180 lines of code is all needed to write the semantics, grammar and parse
-
+// 190 lines of code is all needed to write the semantics, grammar and parse
 namespace cbe_config
 {
 
@@ -464,99 +502,93 @@ static BasicTokenDesc BASIC_TOKENS[] = {
 
 namespace cmt_str
 {
-static SemanticTokenDesc P1[] = {
+constexpr SemanticTokenDesc P1[] = {
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_Comment, 1, 1, true, true), 0, false},
 };
-static SemanticTokenDesc P2[] = {
+constexpr SemanticTokenDesc P2[] = {
     {TokenizerPattern::make<ETokenPatternType::Regex>(&ANY_RE, 1, 1, false, false), CFG_CommentStr, true},
 };
-static SemanticTokenDesc P3[] = {
+constexpr SemanticTokenDesc P3[] = {
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_LineFeed, 1, 1, false, false), 0, false},
     {             TokenizerPattern::make<ETokenPatternType::Eof>(0, 1, 1, false, false), 0, false},
 };
 
-constexpr static const SizeT C1_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P2), decltype(P3)>;
-constexpr static const SizeT C1_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P2), decltype(P3)>;
-
 } // namespace cmt_str
 
-static SemanticTokenDesc COMMENT_STR_WORDS_1[cmt_str::C1_EXTENT][cmt_str::C1_RANK];
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(COMMENT_STR_WORDS_1, cmt_str::P1, cmt_str::P2, cmt_str::P3));
-#define CMT_STR_EXTENT cmt_str::C1_EXTENT
+constexpr static const auto COMMENT_STR_WORDS_1 = ParseHelpers::createCombinations(cmt_str::P1, cmt_str::P2, cmt_str::P3);
+#define CMT_STR_WORDS(FirstFn, Fn, LastFn) FirstFn(COMMENT_STR_WORDS_1)
 
-namespace var_use
+namespace var_use_copy
 {
-static SemanticTokenDesc P1[] = {
+constexpr SemanticTokenDesc P1[] = {
     {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_NAME_RE, 1, 1, false, true), CFG_VarAssignment, true},
 };
-static SemanticTokenDesc P2[] = {
+constexpr SemanticTokenDesc P2[] = {
     {   TokenizerPattern::make<ETokenPatternType::Token>(CFG_Add, 1, 1, false, false), 0, false},
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_Remove, 1, 1, false, false), 0, false},
 };
-static SemanticTokenDesc P3[] = {
+constexpr SemanticTokenDesc P3[] = {
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_CpyAssignment, 1, 1, false, true), 0, false},
 };
-static SemanticTokenDesc P4[] = {
+constexpr SemanticTokenDesc P4[] = {
     {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_USE_RE, 1, 1, true, false), CFG_VarUse, true},
 };
-static SemanticTokenDesc P5[] = {
+constexpr SemanticTokenDesc P5[] = {
     {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_IDX_RE, 1, 1, false, false), CFG_VarIndex, true},
 };
 
-/* Referencing an element in array variable with index */
-constexpr static const SizeT C1_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P2), decltype(P3), decltype(P4), decltype(P5)>;
-constexpr static const SizeT C1_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P2), decltype(P3), decltype(P4), decltype(P5)>;
-constexpr static const SizeT C2_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P3), decltype(P4), decltype(P5)>;
-constexpr static const SizeT C2_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P3), decltype(P4), decltype(P5)>;
+} // namespace var_use_copy
 
+/* Referencing an element in array variable with index */
+constexpr static const auto VAR_USE_IN_ASSIGN_WORDS_1
+    = ParseHelpers::createCombinations(var_use_copy::P1, var_use_copy::P2, var_use_copy::P3, var_use_copy::P4, var_use_copy::P5);
+constexpr static const auto VAR_USE_IN_ASSIGN_WORDS_2
+    = ParseHelpers::createCombinations(var_use_copy::P1, var_use_copy::P3, var_use_copy::P4, var_use_copy::P5);
 /* Referencing variable directly */
-constexpr static const SizeT C3_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P2), decltype(P3), decltype(P4)>;
-constexpr static const SizeT C3_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P2), decltype(P3), decltype(P4)>;
-constexpr static const SizeT C4_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P3), decltype(P4)>;
-constexpr static const SizeT C4_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P3), decltype(P4)>;
+constexpr static const auto VAR_USE_IN_ASSIGN_WORDS_3
+    = ParseHelpers::createCombinations(var_use_copy::P1, var_use_copy::P2, var_use_copy::P3, var_use_copy::P4);
+constexpr static const auto VAR_USE_IN_ASSIGN_WORDS_4 = ParseHelpers::createCombinations(var_use_copy::P1, var_use_copy::P3, var_use_copy::P4);
+#define VAR_USE_COPY_WORDS(FirstFn, Fn, LastFn)                                                                                                \
+    FirstFn(VAR_USE_IN_ASSIGN_WORDS_1) Fn(VAR_USE_IN_ASSIGN_WORDS_2) Fn(VAR_USE_IN_ASSIGN_WORDS_3) LastFn(VAR_USE_IN_ASSIGN_WORDS_4)
 
-} // namespace var_use
-
-static SemanticTokenDesc VAR_USE_IN_ASSIGN_WORDS_1[var_use::C1_EXTENT][var_use::C1_RANK];
-static SemanticTokenDesc VAR_USE_IN_ASSIGN_WORDS_2[var_use::C2_EXTENT][var_use::C2_RANK];
-static SemanticTokenDesc VAR_USE_IN_ASSIGN_WORDS_3[var_use::C3_EXTENT][var_use::C3_RANK];
-static SemanticTokenDesc VAR_USE_IN_ASSIGN_WORDS_4[var_use::C4_EXTENT][var_use::C4_RANK];
-
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_USE_IN_ASSIGN_WORDS_1, var_use::P1, var_use::P2, var_use::P3, var_use::P4, var_use::P5));
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_USE_IN_ASSIGN_WORDS_2, var_use::P1, var_use::P3, var_use::P4, var_use::P5));
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_USE_IN_ASSIGN_WORDS_3, var_use::P1, var_use::P2, var_use::P3, var_use::P4));
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_USE_IN_ASSIGN_WORDS_4, var_use::P1, var_use::P3, var_use::P4));
-#define VAR_USE_EXTENT CMT_STR_EXTENT + var_use::C1_EXTENT + var_use::C2_EXTENT + var_use::C3_EXTENT + var_use::C4_EXTENT
-
-static SemanticTokenDesc VAR_USE_IN_SCOPE_DECL_WORDS[] = {
-    {TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclStart, 1, 1, false,  true),          0, false},
-    {       TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_USE_RE, 1, 1,  true, false), CFG_VarUse,  true},
-    {  TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclEnd, 1, 1, false, false),          0, false},
+namespace var_use_in_scope
+{
+constexpr SemanticTokenDesc P1[] = {
+    {TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclStart, 1, 1, false, true), 0, false},
 };
+constexpr SemanticTokenDesc P2[] = {
+    {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_USE_RE, 1, 1, true, false), CFG_VarUse, true},
+};
+constexpr SemanticTokenDesc P3[] = {
+    {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_IDX_RE, 1, 1, false, false), CFG_VarIndex, true},
+};
+constexpr SemanticTokenDesc P4[] = {
+    {TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclEnd, 1, 1, false, false), 0, false},
+};
+} // namespace var_use_in_scope
+
+constexpr static const auto VAR_USE_IN_SCOPE_DECL_WORDS_1
+    = ParseHelpers::createCombinations(var_use_in_scope::P1, var_use_in_scope::P2, var_use_in_scope::P4);
 /* Referencing an element in array variable with index */
-static SemanticTokenDesc VAR_USE_IDX_IN_SCOPE_DECL_WORDS[] = {
-    {TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclStart, 1, 1, false,  true),            0, false},
-    {       TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_USE_RE, 1, 1,  true, false),   CFG_VarUse,  true},
-    {       TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_IDX_RE, 1, 1, false, false), CFG_VarIndex,  true},
-    {  TokenizerPattern::make<ETokenPatternType::Token>(CFG_ScopeDeclEnd, 1, 1, false, false),            0, false},
-};
-#define VAR_USE_IN_SCOPE_DECL_EXTENT VAR_USE_EXTENT + 2
+constexpr static const auto VAR_USE_IDX_IN_SCOPE_DECL_WORDS_1
+    = ParseHelpers::createCombinations(var_use_in_scope::P1, var_use_in_scope::P2, var_use_in_scope::P3, var_use_in_scope::P4);
+#define VAR_USE_IN_SCOPE_DECL_WORDS(FirstFn, Fn, LastFn) FirstFn(VAR_USE_IN_SCOPE_DECL_WORDS_1) LastFn(VAR_USE_IDX_IN_SCOPE_DECL_WORDS_1)
 
 /* Direct assignment to some value, copy from another var will not be parsed here */
 namespace var_assign
 {
 
-static SemanticTokenDesc P1[] = {
+constexpr SemanticTokenDesc P1[] = {
     {TokenizerPattern::make<ETokenPatternType::Regex>(&VAR_NAME_RE, 1, 1, false, true), CFG_VarAssignment, true},
 };
-static SemanticTokenDesc P2[] = {
+constexpr SemanticTokenDesc P2[] = {
     {   TokenizerPattern::make<ETokenPatternType::Token>(CFG_Add, 1, 1, false, false), 0, false},
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_Remove, 1, 1, false, false), 0, false},
 };
-static SemanticTokenDesc P3[] = {
+constexpr SemanticTokenDesc P3[] = {
     {TokenizerPattern::make<ETokenPatternType::Token>(CFG_Assignment, 1, 1, false, true), 0, false},
 };
-static SemanticTokenDesc P4[] = {
+constexpr SemanticTokenDesc P4[] = {
     {       TokenizerPattern::make<ETokenPatternType::Token>(CFG_SectionStart, 1, 1, false, true),               0, false},
     {TokenizerPattern::make<ETokenPatternType::Regex>(&MULTILINE_STRING_VALUE, 1, 1, false, true), CFG_StringValue,  true},
     {   TokenizerPattern::make<ETokenPatternType::Regex>(&QUOTED_STRING_VALUE, 1, 1, false, true), CFG_StringValue,  true},
@@ -564,28 +596,30 @@ static SemanticTokenDesc P4[] = {
     {      TokenizerPattern::make<ETokenPatternType::Regex>(&ANY_STRING_VALUE, 1, 1, false, true), CFG_StringValue,  true},
 };
 
-constexpr static const SizeT C1_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P2), decltype(P3), decltype(P4)>;
-constexpr static const SizeT C1_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P2), decltype(P3), decltype(P4)>;
-
-constexpr static const SizeT C2_EXTENT = ParseHelpers::COMBO_EXTENT<decltype(P1), decltype(P3), decltype(P4)>;
-constexpr static const SizeT C2_RANK = ParseHelpers::COMBO_RANK<decltype(P1), decltype(P3), decltype(P4)>;
-
 } // namespace var_assign
 
-static SemanticTokenDesc VAR_ASSIGN_WORDS_1[var_assign::C1_EXTENT][var_assign::C1_RANK];
-static SemanticTokenDesc VAR_ASSIGN_WORDS_2[var_assign::C2_EXTENT][var_assign::C2_RANK];
+constexpr static const auto VAR_ASSIGN_WORDS_1
+    = ParseHelpers::createCombinations(var_assign::P1, var_assign::P2, var_assign::P3, var_assign::P4);
+constexpr static const auto VAR_ASSIGN_WORDS_2 = ParseHelpers::createCombinations(var_assign::P1, var_assign::P3, var_assign::P4);
+#define VAR_ASSIGN_WORDS(FirstFn, Fn, LastFn) FirstFn(VAR_ASSIGN_WORDS_1) LastFn(VAR_ASSIGN_WORDS_2)
 
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_ASSIGN_WORDS_1, var_assign::P1, var_assign::P2, var_assign::P3, var_assign::P4));
-DO_ONCE_GLOBAL(ParseHelpers::createCombinations(VAR_ASSIGN_WORDS_2, var_assign::P1, var_assign::P3, var_assign::P4));
-#define VAR_ASSIGN_EXTENT VAR_USE_IN_SCOPE_DECL_EXTENT + var_assign::C1_EXTENT + var_assign::C2_EXTENT
+#define FOR_EACH_CBE_CONFIG_PATTERNS_UNIQUE_FIRST_LAST(FirstFn, Fn, LastFn)                                                                    \
+    CMT_STR_WORDS(FirstFn, Fn, Fn) VAR_USE_IN_SCOPE_DECL_WORDS(Fn, Fn, Fn) VAR_USE_COPY_WORDS(Fn, Fn, Fn) VAR_ASSIGN_WORDS(Fn, Fn, LastFn)
+#define FOR_EACH_CBE_CONFIG_PATTERNS(Fn) FOR_EACH_CBE_CONFIG_PATTERNS_UNIQUE_FIRST_LAST(Fn, Fn, Fn)
 
 /* Update here whenever adding new semantic tokens */
-constexpr static const SizeT TOTAL_SEMANTIC_TOKEN_SENETENCES = VAR_ASSIGN_EXTENT;
-#undef VAR_ASSIGN_EXTENT
-#undef VAR_USE_IN_SCOPE_DECL_EXTENT
-#undef VAR_USE_EXTENT
-#undef CMT_STR_EXTENT
+#define CBE_CONFIG_PATTERNS_EXTENT_FIRST(Pat) ParseHelpers::COMBO_EXTENT<decltype(Pat)>
+#define CBE_CONFIG_PATTERNS_EXTENT(Pat) +ParseHelpers::COMBO_EXTENT<decltype(Pat)>
+constexpr SizeT TOTAL_SEMANTIC_TOKEN_SENETENCES
+    = FOR_EACH_CBE_CONFIG_PATTERNS_UNIQUE_FIRST_LAST(CBE_CONFIG_PATTERNS_EXTENT_FIRST, CBE_CONFIG_PATTERNS_EXTENT, CBE_CONFIG_PATTERNS_EXTENT);
+#undef CBE_CONFIG_PATTERNS_EXTENT
+#undef CBE_CONFIG_PATTERNS_EXTENT_FIRST
 
+#define CBE_CONFIG_COPY_PATTERNS_SEMANTICS(Pat)                                                                                                \
+    for (SizeT i = 0; i < ParseHelpers::COMBO_EXTENT<decltype(Pat)>; ++i)                                                                      \
+    {                                                                                                                                          \
+        outSentences[currOffset++] = { .words = Pat[i] };                                                                                      \
+    }
 void makeSemanticSentences(ArrayRange<SemanticSentenceDesc> outSentences)
 {
     debugAssertf(
@@ -593,48 +627,14 @@ void makeSemanticSentences(ArrayRange<SemanticSentenceDesc> outSentences)
     );
 
     SizeT currOffset = 0;
-    /* comment strings */
-    for (SizeT i = 0; i < cmt_str::C1_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = COMMENT_STR_WORDS_1[i] };
-    }
-    /* basic tokens */
-    outSentences[currOffset++] = { .words = VAR_USE_IDX_IN_SCOPE_DECL_WORDS };
-    outSentences[currOffset++] = { .words = VAR_USE_IN_SCOPE_DECL_WORDS };
-
-    /* variable use in scope declaration or copy assignment */
-    for (SizeT i = 0; i < var_use::C1_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_USE_IN_ASSIGN_WORDS_1[i] };
-    }
-    for (SizeT i = 0; i < var_use::C2_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_USE_IN_ASSIGN_WORDS_2[i] };
-    }
-    for (SizeT i = 0; i < var_use::C3_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_USE_IN_ASSIGN_WORDS_3[i] };
-    }
-    for (SizeT i = 0; i < var_use::C4_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_USE_IN_ASSIGN_WORDS_4[i] };
-    }
-
-    /* variable assignment */
-    for (SizeT i = 0; i < var_assign::C1_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_ASSIGN_WORDS_1[i] };
-    }
-    for (SizeT i = 0; i < var_assign::C2_EXTENT; ++i)
-    {
-        outSentences[currOffset++] = { .words = VAR_ASSIGN_WORDS_2[i] };
-    }
+    FOR_EACH_CBE_CONFIG_PATTERNS(CBE_CONFIG_COPY_PATTERNS_SEMANTICS)
 
     debugAssertf(
         currOffset == TOTAL_SEMANTIC_TOKEN_SENETENCES, "Tokens count({}) mismatch with sentence semantics written out({})!",
         TOTAL_SEMANTIC_TOKEN_SENETENCES, currOffset
     );
 }
+#undef CBE_CONFIG_COPY_PATTERNS_SEMANTICS
 
 } // namespace cbe_config
 
@@ -643,6 +643,8 @@ void testCodesStart()
     String folder = PathFunctions::combinePath(TCHAR(".."), TCHAR(".."), TCHAR("Source/Runtime/ExampleModules/DummyApp/Shaders"));
     folder = PathFunctions::toAbsolutePath(folder, Paths::engineRoot());
     testShaderCompiler(folder);
+
+    ParseHelpers::checkCreateCombinations();
 
     StopWatch sw;
     String configText;
@@ -664,7 +666,6 @@ void testCodesStart()
     LOG("DummyApp", "Semantic tokens parsed in {}ms", StopWatch::WatchTime::asMilliSeconds(sw.currentLapTick()));
     sw.stop();
 }
-
 ```
 
 [//]: # (Below are link reference definitions)
