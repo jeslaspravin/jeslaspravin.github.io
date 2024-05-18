@@ -15,9 +15,6 @@ sidebar:
 
 ## Introduction
 
-{: .notice--warning}
-**Attention**{: .notice-warn-header} Work in progress
-
 I need a shader compiler to parse the shader files and generate the shader byte code necessary for appropriate graphics API being used. The compiler must also be able to generate necessary reflection files.
 I am going to use [DXC] to compile shaders. For Vulkan api [DXC] will be able to cross compile and generate SPIRV bytecodes. `SPIRV-Cross` can be used to generate reflection out of SPIRV bytecode. I hope the reflections from DXC and SPIRV can be used together to generate as much reflection information as possible.
 
@@ -157,7 +154,13 @@ The `MaterialBase` includes a set of nodes, vertex struct layouts, and uniform s
         ArrayView<StringView> commonDefines;
     };
 
-    ArrayView<FeatureSetPermutations> perFsPermutation;
+    struct MaterialModelDesc
+    {
+        NameString modelName;    
+        ArrayView<FeatureSetPermutations> perFsPermutation;
+    };
+
+    ArrayView<MaterialModelDesc> materialModels;
     ```
 
 3. The `MaterialBase`'s config will be used to determine the required nodes in `MaterialShard` and required vertex and uniform layouts.
@@ -175,10 +178,16 @@ Nodes can be declared and defined using following syntax in `MaterialShard`.
 4. The `MaterialBase`'s config can be written like
 
     ```config
-    verts+="VertexStruct1"
-    verts+="VertexStruct2"
-    uniforms+="UniformStruct1"
-    uniforms+="UniformStruct2"
+    verts+={
+        struct="VertexStruct1"
+        bPerInstance=false
+    }
+    verts+={
+        struct="VertexStruct2"
+        bPerInstance=false
+    }
+    structs+="UniformStruct1"
+    structs+="UniformStruct2"
     nodes+={
         name="Node1"
         sig="float invokeNode1(SomeStruct input)"
@@ -196,17 +205,6 @@ Nodes can be declared and defined using following syntax in `MaterialShard`.
     4. Includes the `MaterialBase`s
     5. Includes the generated node codes.
     6. Do the regular shader compilation and reflecting route from here.
-
-{: .hidden}
-
-## Task logs
-
-{: .hidden}
-
-- Created DxcCompiler instance and creation functions.
-- Added JobSystem as multithreading backend.
-- Improve the copat to support single threaded dispatch, diverge
-- Add HLSL source scanning, blob serialization.
 
 [//]: # (Below are link reference definitions)
 
