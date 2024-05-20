@@ -15,9 +15,6 @@ sidebar:
 
 ## Why?
 
-{: .notice--warning}
-**Attention**{: .notice-warn-header} Work in progress
-
 Managing compatibility between render passes, pipelines, and framebuffers can be challenging. Creating a descriptor layout and using it to create pipelines can also be difficult. Allocating descriptors from the descriptor pool and ensuring that they are fully compatible with the pipeline can be another challenge. Supporting additional features like bindless and buffer memory addressing can further complicate the process.
 
 <div class="mermaid">
