@@ -13,9 +13,6 @@ sidebar:
 
 ## Graphics Abstraction Layer(GAL)
 
-{: .notice--warning}
-**Attention**{: .notice-warn-header} Work in progress
-
 Graphics abstraction layer is going to be the light weight abstraction on top of Graphics APIs like Vulkan, DirectX, Metal etc., of Cranberry engine.
 This page will contain some rough abstract of the plan. It is not complete or fool proof and mostly just mental model. I have no working code at this point.
 
