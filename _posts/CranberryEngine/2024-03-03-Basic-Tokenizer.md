@@ -439,7 +439,7 @@ constexpr static T createCombosArray(std::index_sequence<idxs...>, SizeT comboId
 
 ## End note
 
-I believe the design outlined above is sufficient for parsing my configuration language using my versatile parser helpers. Leveraging this generic parser and tokenizer, I can effortlessly tokenize my JSON-like language. Furthermore, extending the semantics and grammar proved to be a straightforward task. 🚀
+I believe the design outlined above is sufficient for parsing my configuration language using my versatile parser helpers. Leveraging this generic parser and tokenizer, I can effortlessly tokenize my JSON-like language. Furthermore, extending the semantics and grammar proved to be a straightforward task.
 
 ```cpp
 // 190 lines of code is all needed to write the semantics, grammar and parse

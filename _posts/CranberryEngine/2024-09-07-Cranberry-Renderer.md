@@ -20,19 +20,20 @@ sidebar:
 title: Static Mesh GPU Data relations
 ---
 erDiagram
-    SmVertIdxBuf ||--|{ SmVertS0 : "contains"
-    SmVertIdxBuf ||--|{ SmVertS1 : "contains"
-    SmVertIdxBuf ||--|{ Indices : "contains"
+    SmVertsBuf ||--|{ SmVertS0 : "contains"
+    SmVertsBuf ||--|{ SmVertS1 : "contains"
+    SmIdxsBuf ||--|{ Indices : "contains"
     GpBindlessData ||--|{ MID : "contains"
     GpBindlessData ||--|{ SmBatch : "contains"
     GpBindlessData ||--|{ BatchMaterialIndex : "contains"
     SmBuf ||--|{ Sm : "contains"
     SmInstBuf ||--|{ SmInst : "contains"
     MIBuf || -- |{ MI : "contains"
-    SmBatch || -- || SmVertIdxBuf : "points to"
+    SmBatch || -- || SmIdxsBuf : "points to"
     MI || -- || MID : "points to"
     BatchMaterialIndex || -- || MI : "points to"
     Sm || -- |{ SmBatch : "points to"
+    Sm || -- |{ SmVertsBuf : "points to"
     SmInst || -- || Sm : "points to"
     SmInst }| -- |{ BatchMaterialIndex : "points to"
     MID }| -- |{ RoTextures : "points to"
@@ -73,7 +74,7 @@ erDiagram
         AABB bound
         float4x3 m2w
         float4x3 w2m
-        uint meshIdx        
+        uint meshIdx
         uint batchMatIdx "Buffer index in GP descriptor"
         uint batchMatOffset "Bytes offset in GP Buffer"
         uint batchCount
@@ -87,13 +88,15 @@ erDiagram
         float2 uv
     }
     %% Buffers
-    SmVertIdxBuf[StaticMeshVertIdxBuffer]{
-        StaticMeshVertStream0 vertsS0Mesh1[]
-        StaticMeshVertStream1 vertsS1Mesh2[]
+    SmIdxsBuf[StaticMeshIdxsBuffer]{
         uint idxsMesh1[]
-        StaticMeshVertStream0 vertsS0MeshN[]
-        StaticMeshVertStream1 vertsS1MeshN[]
         uint idxsMeshN[]
+    }
+    SmVertsBuf[StaticMeshVertsBuffer]{
+        StaticMeshVertStream0 vertsS0Mesh1[]
+        StaticMeshVertStream0 vertsS0MeshN[]
+        StaticMeshVertStream1 vertsS1Mesh2[]
+        StaticMeshVertStream1 vertsS1MeshN[]
     }
     SmBuf[StaticMeshesBuffer]{
         StaticMesh meshes[]
