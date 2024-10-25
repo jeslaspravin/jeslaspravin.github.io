@@ -8,7 +8,7 @@ mermaid: true
 categories: 
     - cranberry
 header:
-    teaser: /assets/images/CranberryEngine/GAL-RP-Pipe-FB-DescSet.svg   
+    teaser: /assets/images/CranberryEngine/ShaderCompiler.svg   
 sidebar:
     nav: "Cranberry_GAL"
 ---
@@ -205,6 +205,31 @@ Nodes can be declared and defined using following syntax in `MaterialShard`.
     4. Includes the `MaterialBase`s
     5. Includes the generated node codes.
     6. Do the regular shader compilation and reflecting route from here.
+
+## Flow
+
+<div class="mermaid">
+---
+title: HLSL to Engine shader bin
+---
+flowchart LR
+hlsl["*HLSL* sources
+Includes
+Material *base* & *shards*"]
+dxc["`DXC`"]
+spvRef["*SPIRV reflector*"]
+spvOpt["*SPIRV optimizer*"]
+shaderBin["Engine shader binaries"]
+shaderCache["Engine managed shader caches"]
+
+hlsl --> dxc
+dxc --> spvRef
+dxc --> spvOpt
+spvOpt --> shaderBin
+spvRef --> shaderBin
+shaderBin --> shaderCache
+
+</div>
 
 [//]: # (Below are link reference definitions)
 

@@ -132,6 +132,33 @@
             "gitLink": null
         },
         {
+            "timestamp": 1708732800000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "compiler",
+                "language",
+                "shader",
+                "hlsl",
+                "spirv",
+                "reflection",
+                "gpu",
+                "program",
+                "engine"
+            ],
+            "name": "Shader compiler",
+            "shortDesc": "Designing the shader compiler to work with engine shaders both offline and runtime",
+            "description": "<p>The blog about design and decisions I took for the shader compiler of my Engine</p><!--<br>--><p>I need a shader compiler to parse the shader files and generate the shader byte code necessary for appropriate graphics API being used. The compiler must also be able to generate necessary reflection files. I am going to use DXC to compile shaders. For Vulkan api DXC will be able to cross compile and generate SPIRV bytecodes. SPIRV-Cross can be used to generate reflection out of SPIRV bytecode. I hope the reflections from DXC and SPIRV can be used together to generate as much reflection information as possible.</p><!--<br>--><p>Features:</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Highly multithreaded</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Separate Job system from main job system, uses inter job system job transfers feature.</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">SPIRV optimizer as post process to control optimization</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Shader reflection</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Works as other piece of GAL to generate data that requires minimal change for renderer usage</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Generate permutations with callback base code generation customization. Used for Material system specific code gen.</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/ShaderCompiler.svg",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/02/03/ShaderCompiler/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
+        },
+        {
             "timestamp": 1709420400000,
             "tags": [
                 "cranberry",
@@ -152,6 +179,30 @@
             "videoUrl": null,
             "customLink": {
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/03/03/Basic-Tokenizer/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
+        },
+        {
+            "timestamp": 1729814400000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "renderer",
+                "scene",
+                "world",
+                "transfer",
+                "gpu",
+                "engine"
+            ],
+            "name": "World Renderer",
+            "shortDesc": "Design of Cranberry's main world renderer",
+            "description": "<p>The blog about design and decisions I took for main world renderer of my Engine</p><!--<br>--><p></p><!--<br>--><p>Features:</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Async compute</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Async transfer</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">GPU driven</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Bindless</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Indirect draw calls</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Compute frustum culling</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/WorldRenderer.jpg",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/09/07/Cranberry-Renderer/",
                 "dispName": "Read More"
             },
             "gitLink": null
