@@ -218,6 +218,7 @@ This entry points uses async transfer queue and might take **`several frames`** 
 In this path the data gets copied to Async transfer arena memory and entries with offset details gets inserted into list.
 The list gets consumed when transfer command buffer becomes available.
 > There can only be one transfer happening at a time so only one `CommandBuffer`(One per transfer worker thread?) is necessary.
+
 The entry point coroutine gets resumed after the transfer it is part of gets completed.
 
 #### Small upload path
