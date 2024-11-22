@@ -33,6 +33,9 @@ source "https://rubygems.org"
 #gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 #gem "jekyll-seo-tag", "~> 2.7.1"
 
+# Basic requirements
 gem "github-pages", group: :jekyll_plugins
 gem "jekyll-include-cache", group: :jekyll_plugins
+
+# Required for debugging locally to bypass CORS
 gem "webrick", group: :jekyll_plugins

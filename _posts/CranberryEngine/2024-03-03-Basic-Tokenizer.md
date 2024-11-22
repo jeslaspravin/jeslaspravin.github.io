@@ -7,6 +7,8 @@ categories:
     - cranberry
 header:
     teaser: /assets/images/CranberryEngine/compiler_tokenizer_cartoon.jpg
+sidebar:
+    nav: "Cranberry"
 ---
 ## Basic tokens parser
 

@@ -22,6 +22,11 @@
     display: block;
 }
 
+%image_card_base {
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
 .notice-info-header {
     @extend %notice-header-base;
     color: turquoise;
@@ -61,5 +66,10 @@
 }
 
 .jpblog_iframe {
+    @extend %image_card_base;
     width: 100%;
+}
+
+.jpblog_img_card {
+    @extend %image_card_base;
 }

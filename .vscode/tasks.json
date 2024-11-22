@@ -6,7 +6,7 @@
     "tasks": [
         {
             "label": "[Private]Start development server",
-            "command": "bundle exec jekyll serve --config _config.yml,_dev_config.yml",
+            "command": "bundle exec jekyll serve --config _config.yml,_dev_config.yml -V -t",
             "options": {
                 "env": {
                     "JEKYLL_ENV": "development"
@@ -20,7 +20,7 @@
         },
         {
             "label": "[LAN]Start development server",
-            "command": "bundle exec jekyll serve --host=0.0.0.0 --config _config.yml,_dev_config.yml",
+            "command": "bundle exec jekyll serve --host=0.0.0.0 --config _config.yml,_dev_config.yml -V -t",
             "options": {
                 "env": {
                     "JEKYLL_ENV": "development"

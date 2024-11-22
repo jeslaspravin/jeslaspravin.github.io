@@ -1,5 +1,5 @@
 Cranberry_GAL:
-  - title: "Step 1: Planning GAL"
+  - title: "Planning GAL"
     url: "/cranberry/2023/10/06/Planning-GAL/"
     children:
       - title: "Initial Plan"
@@ -14,5 +14,23 @@ Cranberry_GAL:
         url: "/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors-Shaders"
       - title: "Shader compiler"
         url: "/cranberry/2024/02/03/ShaderCompiler/"
-      - title: "Cranberry renderer(World renderer)"
+  - title: "Cranberry renderer"
+    children:
+      - title: "World renderer"
         url: "/cranberry/2024/09/07/Cranberry-Renderer/"
+
+Cranberry:
+  - title: "Subsystems"
+    children:
+      - title: "Graphics Abstraction Layer(GAL)"
+        url: "/cranberry/2023/10/06/Planning-GAL/"
+      - title: "Cranberry Audio"
+        url: "/cranberry/2024/11/22/CranberryAudio/"
+  - title: "Engine config"
+    children:
+      - title: "Custom CBE config parser"
+        url: "/cranberry/2024/03/03/Basic-Tokenizer/"
+  - title: "Engine General"
+    children:
+      - title: "Unicode and CPP"
+        url: "/cranberry/2022/02/11/Unicode-And-CPP/"

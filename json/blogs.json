@@ -198,7 +198,7 @@
             "name": "World Renderer",
             "shortDesc": "Design of Cranberry's main world renderer",
             "description": "<p>The blog about design and decisions I took for main world renderer of my Engine</p><!--<br>--><p></p><!--<br>--><p>Features:</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Async compute</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Async transfer</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">GPU driven</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Bindless</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Indirect draw calls</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Compute frustum culling</li><!--<br>--></ul>",
-            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/WorldRenderer.jpg",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/WorldRenderer(03-11-2024).png",
             "galleryImgs": [],
             "videoUrl": null,
             "customLink": {

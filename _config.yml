@@ -21,7 +21,6 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
 title: "Jeslas Pravin | Blogs"
 name: "Jeslas Pravin"
 email: pravinjeslas@gmail.com
@@ -83,9 +82,9 @@ author:
   name: "Jeslas Pravin"
   avatar: "/assets/images/SIGN8392_focused.jpg"
   bio: >-
-    "`Game and Game Engine programmer`, now `optimization engineer` in graphics driver team. 
-     I do graphics programming using `Vulkan` API. I enjoy programming using `C++`(Maybe because I have not tried Rust or Zig).
-     I like metaprogramming with templates in my solo project only"
+    "`Game and Game Engine programmer`, now `driver engineer` in graphics driver team. 
+     I do graphics programming using `Vulkan` API. I enjoy programming using `C++`.
+     I like metaprogramming with templates in my solo project only. Even though I forget what the hell I wrote after few months."
   location: "Trondheim, Norway"
   links:
     - label: "My Webpage"
@@ -124,6 +123,7 @@ after_footer_scripts:
 sass:
   sass_dir: _sass
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  verbose: true
 
 # defaults
 defaults:
@@ -142,7 +142,7 @@ defaults:
 
 # Build settings
 #theme: minima
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 plugins:
   - github-pages
   - jekyll-include-cache

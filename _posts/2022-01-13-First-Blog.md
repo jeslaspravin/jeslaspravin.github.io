@@ -7,7 +7,7 @@ header:
 ---
 ## 2022
 
-It is year ***2022*** and my resolution for this year is to write blogs about my day to day events/learning or if something interesting happens. I wanted to really do this atleast this time. Yes this time, I have been trying to have my own blog for atleast past 3 years and now It is finally happening.
+It is year ***2022*** and my resolution for this year is to write blogs about my day to day events/learning or if something interesting happens. I wanted to really do this at least this time. Yes this time, I have been trying to have my own blog for at least past 3 years and now It is finally happening.
 
 ## Start blogging
 
@@ -20,7 +20,7 @@ Following are list of AWS services required for setting up [my webpage]
 * `AWS Certificate manager`(optional) to manage SSL certificate for my domains
 * `CloudFront`(optional) to glue/intercept requests to my domain and make then secure
 
-![image-right](/assets/images/First-Blog/Webpage-Blog-Filter.png){: .align-right style="border-radius: 10px;" }
+![image of webpage's blog filter](/assets/images/First-Blog/Webpage-Blog-Filter.png){: .align-right .jpblog_img_card }
 Now that I worked out a target, I gathered energy to update my website to include a blog redirectors and some filters to blogs list. These redirectors will be containing a short summary of the blog content. I familiarized/refreshed myself again with `typescript`, `css`, and other static page related concepts. Also I understood `Observables` in typescript little better than last time. I setup my personal machine with environment and began rewriting my code. Following improvement or changes I did to my webpage code.
 
 * Improved service typescripts to better cache responses

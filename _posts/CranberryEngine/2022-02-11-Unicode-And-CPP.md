@@ -7,6 +7,8 @@ categories:
     - cranberry
 header:
     teaser: /assets/images/CranberryEngine/Unicode/unicodes.png
+sidebar:
+    nav: "Cranberry"
 ---
 ## Unicode in my engine
 

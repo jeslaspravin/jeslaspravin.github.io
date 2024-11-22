@@ -302,4 +302,14 @@ The block chunk with 128 slots will be in following layout
 
 First I will implement the above planned struct and will append to this article as needed.
 
+### **Update** 22 November 2024
+
+Implemented the new renderer using GAL, removed the legacy renderer and application.
+
+![Legacy renderer removed](/assets/images/CranberryEngine/LegacyRendererRemoval.jpg){: .jpblog_img_card }
+
+### World streamed and rendered using new renderer
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1TBgXL6BrTU?si=qxXkaaaU9TKUY9_a" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="jpblog_iframe"></iframe>
+
 [//]: # (Below are link reference definitions)
