@@ -17,9 +17,9 @@ If you do not know/understand what Unicode and It's encoding means read [The abs
 
 ### Brief on Unicode
 
-What is **`Unicode`**{: style="color: red;" }?
+What is `Unicode`{: .jpblog_emphasized }?
 In a very simple terms, It is just a table with every characters from some popularly spoken language around the world mapped to a code word(`Unicode`).
-This code word is also called as **`Code Point`**{: style="color: red;" }.
+This code word is also called as `Code Point`{: .jpblog_emphasized }.
 
 > #### **It All Started Here**
 >
@@ -38,7 +38,7 @@ At this point it seems that there is no need for any additional representations 
 >* Third set of english alphabets are prefixed with `M` so `*U* is **MI**, *V* is **MII** ... *Z* is **MVI**
 >* Obviously this is inefficient. A 3 letter word requires minimum 6 letters and maximum 12Letters but my tiny brain cannot think beyond that at that point.
 
-You see this is exactly what Unicode encoding does. These sections are called as **`Code pages`**{: style="color: red;" } in unicode. `Code pages` allows us to use the same code point but with different representations.
+You see this is exactly what Unicode encoding does. These sections are called as **`Code pages`**{: .jpblog_emphasized } in unicode. `Code pages` allows us to use the same code point but with different representations.
 
 So far we have seen `Code points` and `Code pages`. Code points are entries in a table mapping characters to code and Code pages are distinct tables.
 

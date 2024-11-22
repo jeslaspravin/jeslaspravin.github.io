@@ -73,3 +73,9 @@
 .jpblog_img_card {
     @extend %image_card_base;
 }
+
+.jpblog_emphasized{
+    color: red;
+    font-weight: bolder;
+    font-style: italic;
+}
