@@ -5,7 +5,7 @@
             "tags": [],
             "name": "First Blog",
             "shortDesc": "Small write up on how my decision to write blogs and what I will write",
-            "description": "<p>In this very first blog I wrote about what made me to finally start writting blogs. I also wrote about the steps to finally start writting blogs which is surprising very simple with services available today</p><!--<br>-->            <p>I also cannot wait to write more in the future</p>",
+            "description": "<p>In this very first blog I wrote about what made me to finally start writing blogs. I also wrote about the steps to finally start writing blogs which is surprising very simple with services available today</p><!--<br>-->            <p>I also cannot wait to write more in the future</p>",
             "tileImageUrl": null,
             "galleryImgs": [],
             "videoUrl": null,
@@ -203,6 +203,27 @@
             "videoUrl": null,
             "customLink": {
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/09/07/Cranberry-Renderer/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
+        },
+        {
+            "timestamp": 1732233600000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "audio",
+                "sound",
+                "miniaudio"
+            ],
+            "name": "Cranberry audio",
+            "shortDesc": "Audio programming in my game engine and notes on the first library I decided to use for audio backend",
+            "description": "<p>Audio programming is conceptually simple however writing it correctly is not an easy task. So I chose to use existing libraries.</p><!--<br>--><p>After skimming through few audio library's(sdl, miniaudio, wwise and fmod) documentations, I decided to go with miniaudio and base my wrapper on it.</p><!--<br>--><p></p><!--<br>--><p>Why `miniaudio`?</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Open source MIT</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Thin platform wrapper</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Freedom to override any system in the library to my satisfactory</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/SoundWaves.png",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/11/22/Cranberry-Audio/",
                 "dispName": "Read More"
             },
             "gitLink": null
