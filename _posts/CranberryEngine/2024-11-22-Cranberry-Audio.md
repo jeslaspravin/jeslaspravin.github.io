@@ -99,3 +99,25 @@ erDiagram
 - Each decoder is created for a unique audio. So decoders must be created for each audio data separately.
 - In our case this means just decode from memory.
 - These decoders will be exposed as functions rather than as object in engine as part of `ICbeAudioModule` interface.
+
+### Node graph
+
+- Engine is the node graph into which all the other node graph and sounds plug into as the endpoint.
+- Only difference about node graph from regular graph is each input bus index of node graph can accept several inputs. Each inputs gets mixed together. That is how several sounds or sound graphs can be plugged into the engine end point input.
+
+## Designing the engine interface
+
+Notes on points to consider when designing the engine interface.
+
+- In order to reduce the resampling of the audio frames and recreating data sources. The sample rate of each data source must match that of each engine. The format and channel count could differ though.
+- The devices must be created with sampling rate the engine targets instead of device default. This ensures we can use the same data source for all devices and engines.
+- Engine and all the sound sources must be recreated after changing the device. However there will be only one cranberry audio engine and remains the same, similar setup works for the sounds as well.
+- There will be only `MAX_LOCAL_PLAYERS` count of engines, So for each cranberry engine sound player there could be `MAX_LOCAL_PLAYERS` number of sounds.
+- In case of sound graphs I want to keep the graphs independent of the engine. Since input sound nodes are the only variable across engines and devices, custom miniaudio sound nodes must be created that fetches PCM frames from different sound based on which mini audio engine is reading the frames.
+- Sound graphs must be created from some high level graph structure(Created from UI) the total number of nodes, their types and memory requirements can be precalculated. This makes it possible to not have separate node resources in Audio module interface.
+- Inputs of sound graph will be the data sources/Audio resources. The audio resources themselves will contain the link to sound resource created from data source in the engine.
+- Following resources must be independent of the engine/devices
+  - Data sources/Audio resources
+  - Sound graphs
+- Following resources are unique to engine and must retain the create configuration.
+  - Sound/Audio player
