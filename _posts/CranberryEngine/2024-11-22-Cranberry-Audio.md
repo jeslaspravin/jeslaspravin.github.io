@@ -4,6 +4,7 @@ title:  "Cranberry audio"
 date:   2024-11-22
 excerpt: "Notes on adding and wrapping audio library to cranberry"
 mermaid: true
+mathjax: true
 categories: 
     - cranberry
 sidebar:
@@ -121,3 +122,68 @@ Notes on points to consider when designing the engine interface.
   - Sound graphs
 - Following resources are unique to engine and must retain the create configuration.
   - Sound/Audio player
+
+### Audio Streaming
+
+Audio files are huge streaming is the only way to keep the memory usage in check. MiniAudio provides the opportunity to stream but only if using its resource manager.
+I am not using the resource manager so I decided to use the `ma_decoder` directly as dynamic data source. I also want to keep using `ma_audio_buffer_ref` for streaming.
+
+**`ma_audio_buffer_ref`** requires all the memory to be accessibly.
+So the problem I have to solve is have the memory but not have the memory. The solution is something all the modern operating system and hardware offers **`Virtual allocation`** with place holders. That is the solution I opt for.
+
+Here is how it works. I allocate the virtual space addresses with no backing memory for all frames necessary for an audio buffer.
+This read only address we call `PCM Frames address`. Then comes the streaming(Writable) memory address that is mapped to physical memory, This address we call `Streaming address`.
+This streaming address space is 64k aligned and it is used to determine how many frame an audio page will contain. On top of that I double buffer the audio page, this is to load next page asynchronously while current page plays.
+
+$$
+\text{totalPhysicalMem} = \text{frameSizeInBytes} \times \text{numberOfFramesPerAudioPage} \times \text{bufferCount}
+$$
+
+Let us assume `totalPhysicalMem` is 8bytes and contains 2 frames, double buffering. Then the memory mapping will look like below
+
+<div class="mermaid">
+---
+title: Memory map
+---
+block-beta
+columns 1
+    block
+        columns 1
+        block
+            Map
+            Map0
+            MapN["Map ...N"]
+            MapN1["Map N+1"]
+        end
+        block
+            PhysicalAddr["Physical Addr"]
+            PhysicalRange0["0 .... 7 .... 15"]
+            PhysicalRangeN[" ..... "]
+            PhysicalRangeN1["0 .... 7 .... 15"]
+        end
+        block
+            PCMR["PCM Frames address"]
+            MappedRead0["0 .... 7 .... 15"]
+            MappedReadN[" ..... "]
+            MappedReadN1["n+0 .... n+7 .... n+15"]
+        end
+        block
+            PCMW["Streaming address"]
+            MappedWrite0["0 .... 7 .... 15"]
+            MappedWriteN[" ..... "]
+            MappedWriteN1["0 .... 7 .... 15"]
+        end
+    end
+</div>
+
+The `totalPhysicalMem` gets mapped to `PCM Frames address` repeatedly which the `ma_audio_buffer_ref` can use to read from as continuous address.
+Whenever streaming new data for a frame it gets written to page range the frame belongs to in `Streaming address`. The `ma_audio_buffer_ref` could just keep reading from the `PCM Frames address` just like regular memory.
+
+**`ma_decoder`** can be initialized using virtual file system using custom callbacks. Decoder calls read or seek from callback whenever it has need for some new data.
+
+So far I have shown ways to keep `ma_audio_buffer_ref` fed and `ma_decoder` reading data. However I have not mentioned when data gets read from file or where the data gets moved to `Streaming address`.
+It happens like this. I override the default VTable `ma_audio_buffer_ref`'s data source uses for reading/seeking frame data. When the audio buffer tries to read a frame I make sure that frame is ready in the `PCM Frames address` by either waiting for async task streaming the data. Or block stream the data into `Streaming address`. Then issue new async request to stream in next audio page as audio mostly gets played forward in games(Reverse might block when streaming but that is okay). Now that data request is made by `ma_audio_buffer_ref` loading is where `ma_decoder` comes in. The audio data will be stored in some encoded format, so any kind loading must go through a decoder. The decoder uses the `vfs` virtual table to stream data from whatever source audio lib caller provides.
+
+For a 150Seconds audio the streaming saves around 50MB of active memory.
+
+![Image showing memory usage drop of 50MB when streaming audio compared to playing from memory](/assets/images/CranberryEngine/AudioStreamVsInMemPlay.jpg){: .jpblog_img_card }

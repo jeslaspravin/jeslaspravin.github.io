@@ -36,6 +36,7 @@ source "https://rubygems.org"
 # Basic requirements
 gem "github-pages", group: :jekyll_plugins
 gem "jekyll-include-cache", group: :jekyll_plugins
+# gem "redcarpet", group: :jekyll_plugins
 
 # Required for debugging locally to bypass CORS
 gem "webrick", group: :jekyll_plugins
