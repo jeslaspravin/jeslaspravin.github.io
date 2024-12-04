@@ -106,6 +106,11 @@ erDiagram
 - Engine is the node graph into which all the other node graph and sounds plug into as the endpoint.
 - Only difference about node graph from regular graph is each input bus index of node graph can accept several inputs. Each inputs gets mixed together. That is how several sounds or sound graphs can be plugged into the engine end point input.
 
+### Sound Groups
+
+- These are similar to sound but with out any data. Their sole purpose is to modify the input based on config provided and it can be shared across several sounds in an engine.
+  This allows it to be used as common settings for a group of sounds. It has all properties of sound like spatialize, pan, pitch, gain, volume etc...
+
 ## Designing the engine interface
 
 Notes on points to consider when designing the engine interface.
@@ -118,10 +123,54 @@ Notes on points to consider when designing the engine interface.
 - Sound graphs must be created from some high level graph structure(Created from UI) the total number of nodes, their types and memory requirements can be precalculated. This makes it possible to not have separate node resources in Audio module interface.
 - Inputs of sound graph will be the data sources/Audio resources. The audio resources themselves will contain the link to sound resource created from data source in the engine.
 - Following resources must be independent of the engine/devices
-  - Data sources/Audio resources
-  - Sound graphs
+  - `Data sources/Audio resources`
+  - `Sound graphs`(Static portion will be engine independent however the dynamic portion must be initialized within each engine for each instance)
+  - `Sound group resource`(Must also have a copy per engine as the outputs has to connect to engine input bus)
 - Following resources are unique to engine and must retain the create configuration.
-  - Sound/Audio player
+  - `Sound/Audio player`
+  - `Sound graphs`(Static portion will be engine independent however the dynamic portion must be initialized within each engine for each instance)
+  - `Sound group resource`(Must also have a copy per engine as the outputs has to connect to engine input bus)
+  - `ESoundGroup` This is similar to sound group resource but adjustable globally across all the group/sound/graph that outputs into this(Must also have a copy per engine as the outputs has to connect to engine input bus).
+
+### How sound group and ESoundGroup must be used?
+
+General idea is
+
+1. what ever node that connect to a sound group it must either connect to `sound group resource` or connect to `ESoundGroup` but not to both.
+2. `ESoundGroup` must be the last node output in any graph(Can be one as simple as sound and group or sound graph and group). So if used, it must be the node connecting to the input of engine.
+    Sound, Sound graph and other sound group must connect to it.
+3. A `Sound player resource` or `Sound Graph` can connect to a `sound group resource` or `ESoundGroup`. Do not confuse it with sounds embedded into sound graph.
+4. Sounds embedded inside a sound graph can only connect to other sound graph nodes. In fact none of the nodes in sound graph can connect to `sound group resource` or `ESoundGroup` except the sound graph end node.
+5. A `sound group resource` can connect to `ESoundGroup` only. This is to reduce the complexity(I doubt there will be need to create such a interconnected group) with replicating the sound group across several engines.
+
+<div class="mermaid">
+---
+title: Node graph
+---
+flowchart LR
+    Engine@{ shape: lin-rect, label: "Engine" }
+    SoundPlayer[["Sound/Audio Player"]]
+    SoundPlayerNode[["Sound/Audio Player Node"]]
+    ESoundGroup[[ESoundGroup]]
+    SoundGroup[["Sound Group"]]
+    SoundGraphNode[["Sound Graph Node/s... "]]
+    SoundGraphEndNode[["Sound Graph End Node"]]
+    SoundGroup --> Engine
+    ESoundGroup --> Engine
+    SoundGraphEndNode --> Engine
+
+    %% Sound only
+    SoundPlayer --> Engine
+    SoundPlayer --> SoundGroup
+    SoundGroup -->  ESoundGroup
+
+    %% Sound graph
+    SoundPlayerNode --> SoundGraphEndNode
+    SoundGraphEndNode --> SoundGroup
+    SoundGraphEndNode --> ESoundGroup
+    SoundPlayerNode --> SoundGraphNode
+    SoundGraphNode --> SoundGraphEndNode
+</div>
 
 ### Audio Streaming
 
