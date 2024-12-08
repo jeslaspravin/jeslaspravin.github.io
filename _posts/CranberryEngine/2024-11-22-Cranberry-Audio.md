@@ -13,9 +13,6 @@ sidebar:
 
 ## Cranberry audio intro
 
-{: .notice--warning}
-**Attention**{: .notice-warn-header} Work in progress
-
 Audio programming is conceptually simple however writing it correctly is not an easy task. So I chose to use existing libraries.
 After skimming through few audio library's(`sdl`, `miniaudio`, `wwise` and `fmod`) documentations, I decided to go with `miniaudio`{: .jpblog_emphasized } and base my wrapper on it.
 Why `miniaudio`?
@@ -236,3 +233,8 @@ It happens like this. I override the default VTable `ma_audio_buffer_ref`'s data
 For a 150Seconds audio the streaming saves around 50MB of active memory.
 
 ![Image showing memory usage drop of 50MB when streaming audio compared to playing from memory](/assets/images/CranberryEngine/AudioStreamVsInMemPlay.jpg){: .jpblog_img_card }
+
+### Sound Graph
+
+{: .notice--warning}
+**Attention**{: .notice-warn-header} Work in progress
