@@ -7,7 +7,7 @@ mermaid: true
 categories: 
     - cranberry
 header:
-    teaser: /assets/images/CranberryEngine/WorldRenderer(03-11-2024).png 
+    teaser: /assets/images/CranberryEngine/WorldRenderer(03-11-2024).png
 sidebar:
     nav: "Cranberry_GAL"
 ---

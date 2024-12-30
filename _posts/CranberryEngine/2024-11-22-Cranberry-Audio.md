@@ -7,6 +7,8 @@ mermaid: true
 mathjax: true
 categories: 
     - cranberry
+header:
+    teaser: /assets/images/CranberryEngine/SoundWaves.png
 sidebar:
     nav: "Cranberry"
 ---

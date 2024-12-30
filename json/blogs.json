@@ -227,6 +227,29 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1735513200000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "gc",
+                "garbage",
+                "collector",
+                "pointer",
+                "object"
+            ],
+            "name": "Cranberry garbage collector",
+            "shortDesc": "Post contains information about current Garbage Collector in my game engine and ideas to improve it further",
+            "description": "<p>The current GC goes through all the fields of each objects to collect references of other objects. Then goes through each objects and replaces the pointer in case the objects gets deleted. This is brute force collecting and could be improved</p><!--<br>--><p>Then the GC is single threaded and cannot run in worker threads. Yielding is not very cooperative once GC starts.</p><!--<br>--><p></p><!--<br>--><p>So the points I want to improve are</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multi thread the GC</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reduce the overhead at collecting the references</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Reduce the overhead at replacing/deleting the references</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Have reference collection for classes that uses Raw pointer as worst case fallback</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Better thread yielding</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/GC_AI_Generated.webp",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2024/12/30/Cranberry-Object-GC/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }

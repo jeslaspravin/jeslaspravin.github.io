@@ -26,6 +26,8 @@ Cranberry:
         url: "/cranberry/2023/10/06/Planning-GAL/"
       - title: "Cranberry Audio"
         url: "/cranberry/2024/11/22/Cranberry-Audio/"
+      - title: "Object GC"
+        url: "/cranberry/2024/12/30/Cranberry-Object-GC/"
   - title: "Engine config"
     children:
       - title: "Custom CBE config parser"
