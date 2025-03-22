@@ -250,6 +250,26 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1742601600000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "physics",
+                "jolt"
+            ],
+            "name": "Cranberry Physics",
+            "shortDesc": "Physics integration in my game engine and notes on the first library I decided to use for physics engine",
+            "description": "<p>I want physics, ability to query the scene for purposes like audio occlusion and of course for game play queries.</p><p></p><!--<br>--><p>I took a look at Bullet and Jolt, decided to go with Jolt due to following reasons.</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Open source MIT</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Multithreaded</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">JobSystem integration</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Customizable filters</li><!--<br>--></ul>",
+            "tileImageUrl": null,
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2025/03/22/Cranberry-Physics/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }

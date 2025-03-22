@@ -63,6 +63,7 @@ The following list will be checked only if none of the object and its parents ar
   - May require rewriting some of ModuleReflect tool.
 - **Obsolete** Support retrieval of Object pointer from any address in `cbe::ObjectAllocator<Class>`
 - Support tuple of vector of types in `SparseVector` as `SparseVectorTuple` and in `FlatTree`. This is to allow multiple stream independent types of Sparse array but with single tracking data structure.
+- Support in `copat::JobSystem` to allow checking if current thread's Job Queue has jobs.
 
 ## GC Steps
 
