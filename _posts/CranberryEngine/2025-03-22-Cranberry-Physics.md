@@ -85,12 +85,47 @@ struct JobPacket
     JPH::Job joltJob;
     /* Inline chain to next entry in Barrier's Job list, Do not need atomic here as head in Barrier will be atomic */
     JobPacket *barrierNext;
-
+    
     struct MultiThreadData
     {
-        CopatTask task;
-        /* For tracking if job is already enqueued, This is necessary since Barrier works outside the coroutine framework of CoPaT JobSystem */
-        std::atomic_bool bEnqueued;
+        enum Flags : uint32
+        {
+            Enqueued = 1u,
+            /* Denotes this task is shared with another task and the another task points to task
+             * that has the actual coroutine. */
+            SharedTask = 1u << 31,
+        };
+
+        union TaskData
+        {
+            JoltCopatTask task = { nullptr };
+            JPH::JobHandle jobHnd;
+
+            TaskData() = default;
+            MAKE_TYPE_NONCOPY_NONMOVE(TaskData)
+            ~TaskData() {}
+        } data;
+        /* For tracking if job is already enqueued.
+         * This is necessary since Barrier works outside the coroutine framework of CoPaT JobSystem.
+         * Now the CoPaT do not exposes internal details like completion or execution states directly.
+         */
+        std::atomic_uint32_t flags;
+
+        MultiThreadData() = default;
+        MAKE_TYPE_NONCOPY_NONMOVE(MultiThreadData)
+        ~MultiThreadData()
+        {
+            const uint32 ldFlags = flags.load(std::memory_order::relaxed);
+            if (BIT_SET(ldFlags, SharedTask))
+            {
+                debugAssert(data.jobHnd.IsValid());
+                data.jobHnd.~JobHandle();
+            }
+            else
+            {
+                data.task.~JobSystemTaskType();
+            }
+        }
     };
     struct SingleThreadData
     {
@@ -130,7 +165,11 @@ In multithreaded mode
 - `CreateBarrier` Barriers are sparsely created so now it will be pool allocated. New barrier gets allocated from this thread unsafe pool allocator inside a lock.
 - `DestroyBarrier` returns the barrier to the thread unsafe pool allocator inside lock.
 - `WaitForJobs` will call the multi threaded variant of wait in Barrier implementation.
-- `QueueJob` and `QueueJobs` Queues the Job for execution wrapped inside a coroutine. Fills the `JobPacket::taskData.mt` with task details.
+- `QueueJob` Queues the Job for execution and fills the `JobPacket::taskData.mt`. In `JobPacket::taskData.mt` it fills `data.task` and sets `Enqueued` flag.
+  The job queued pauses immediately to allow the `QueueJob` to fill these details in the single task and then resumes the task which then actually enqueues the task into my job system.
+- `QueueJobs` Queues the Job for execution and fills the `JobPacket::taskData.mt`. In `JobPacket::taskData.mt` it fills `data.jobHnd` and sets `Enqueued|SharedTask` flags.
+  Queueing happens in batches similar to how `copat::dispatch` does and each batch gets an unique Task handle. Only the first job of each batch retains this task handle and the rest of tasks points to the first job.
+  The jobs queued pauses immediately to allow the `QueueJobs` to fill these details in the first job of each batch and then resumes the task which then actually enqueues the task batches into my job system.
 
 ### Filter interfaces
 
@@ -301,6 +340,59 @@ end
 
 </div>
 
+### Body and Shapes
+
+Bodies are the building block for simulation in Physics system(A Physics world). Each body can hold only one shape, Will comeback to this single shape situation later when touching up on shapes.
+Bodies store simulation behavior data. Each body represent a single physics entity. In my engine each body represents an instance of `MeshComponent`. All the constraints works at body level.
+
+Shapes on the other hand represents the actual geometry. Each body has one shape in my engine if the Mesh has only one shape the body will hold it directly. However there are other shapes like `CompoundShape` that allows you to spatially modify shapes or aggregate multiple shapes under a shape. Note that if aggregating shapes they are welded into a single shape. So if I need control of individual shapes I must explore further when the need arises.
+
+
+<div class="mermaid">
+---
+title: Relations
+---
+erDiagram
+    w[World]
+    a[Actor]
+    m[Mesh]
+    mc["Mesh Component"]
+    s["Physics Shape"]
+    ss["Physics SubShapes"]
+    b["Physics Body"]
+    pw["Physics World"]
+
+    direction LR
+    w ||--o{ a : holds
+    a ||--o{ mc : contains
+    mc ||--|| m : uses
+    pw ||--|| w : simulates
+    m ||--o| s : creates
+    m ||--o{ ss : creates
+    s ||--o{ ss : refers
+    pw ||--|| b : holds
+    b }o--|| s : uses
+</div>
+
+#### Serialization
+
+Bodies just hold properties necessary for simulation and can be ignored from saving the physics state during serialization. I can get away with storing just data configured in engine asset.
+
+For Shapes though it is different. Shapes like `MeshShape` or `ConvexHullShape` has optimized data that needs to be cooked/baked for optimized loading. What I am planning to do here is introduce versions to each shapes in Physics Interface. This version can be used in editor build to be checked for compatibility before serializing shapes from physics binary data. Also in editor after serializing I can just validate it against the raw physics config and data to make sure the data is right. In game build/cooked asset though will only contain only cooked physics data, the idea behind this approach is once cooked the physics system version will not change unless updated at project wide scope.
+
+#### Bodies in Skeleton
+
+Jolt has support for ragdolls and it is basically a helpful wrapper around bodies with good defaults pre setup.
+I have not explored a lot on this right now. I will start looking at this further when I actually have a rigged character in my game engine with skeletons.
+
+There are few classes which are of interest to explore when time comes
+
+- `Skeleton` - Skeleton in its resting pose
+- `SkeletonPose` - Skeleton instance that can be animated(Not sure If I need it as not necessary for Ragdolls)
+- `RagdollSettings` and `Ragdoll` - Ragdoll instance and settings which uses the skeleton at rest pose to do the simulation.
+
+My guess before looking into it is I must blend between skeleton animation and ragdoll. For this I do not need `SkeletonPose`.
+
 ## Engine physics
 
 For optimizing the collision detection as mush as possible I have decided to make each physics body to have separate mask of `ObjectLayers`.
@@ -310,7 +402,7 @@ For this to work we need following conditions
 
 - Change Jolt to use 32bit for ObjectLayer, this can be done using `-DOBJECT_LAYER_BITS=32` cmake config
 - Limit maximum number of Engine Object Layers to `26(0-25)`. This is to use the higher 26 bits of ObjectLayer as body response mask for both simulation and query combined.
-- Use `one bit` for determining whether the mask has simulation response in it. Why simulation instead of query? This can be used to quickly reject simulation request if the there the body is never used for simulation. Where as for query if needs additional checks if sim is enabled to be sure if body needs to respond.
+- Use `one bit` for determining whether the mask has simulation response in it. Why simulation instead of query? This can be used to quickly reject simulation request if the body is never used for simulation. Where as for query it needs additional checks if sim is enabled to be sure if body needs to respond.
 - Use `5bits` for storing the body's Object layer itself
 - ObjectLayer filter will filter layers coarsely
 - `BodyFilter` or `SimShapeFilter` filters the based on body's sim or query response mask based on the filter used.

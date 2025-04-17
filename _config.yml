@@ -140,6 +140,8 @@ defaults:
       share: true
       related: true
       classes: wide
+      toc: true # Enable Table Of Contents
+      toc_label: "Contents"
 
 # Build settings
 #theme: minima
