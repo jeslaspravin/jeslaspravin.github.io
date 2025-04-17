@@ -347,7 +347,6 @@ Bodies store simulation behavior data. Each body represent a single physics enti
 
 Shapes on the other hand represents the actual geometry. Each body has one shape in my engine if the Mesh has only one shape the body will hold it directly. However there are other shapes like `CompoundShape` that allows you to spatially modify shapes or aggregate multiple shapes under a shape. Note that if aggregating shapes they are welded into a single shape. So if I need control of individual shapes I must explore further when the need arises.
 
-
 <div class="mermaid">
 ---
 title: Relations
@@ -392,6 +391,17 @@ There are few classes which are of interest to explore when time comes
 - `RagdollSettings` and `Ragdoll` - Ragdoll instance and settings which uses the skeleton at rest pose to do the simulation.
 
 My guess before looking into it is I must blend between skeleton animation and ragdoll. For this I do not need `SkeletonPose`.
+
+### Physics Materials
+
+Materials are completely custom implemented and can be used by converting to my implementation where ever shape's material is available.
+
+Example use cases are
+
+- Modify the restitution and friction between contact surfaces during contacts. This can be achieved via
+  - `ContactListener` and its `OnContactAdded` and `OnContactPersisted` callbacks by modifying `ContactSettings &ioSettings`.
+  - By overriding combine restitution and friction functions using `SetCombineFriction` and `SetCombineRestitution`.
+- Play different audio based on the material of contact bodies.
 
 ## Engine physics
 
