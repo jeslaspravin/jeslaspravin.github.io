@@ -22,6 +22,16 @@
                     "title": "Lumberyard Bistro(Exterior only)",
                     "shortDesc": "Screenshot of Lumberyard Bistro(Exterior only)",
                     "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/WorldRenderer(03-11-2024).png"
+                },
+                {
+                    "title": "Immediate mode world debug draw",
+                    "shortDesc": "Screenshot of immediate mode world debug drawing in engine. It show cases it being used by physics backend to draw shapes.",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/CbeWorldDebugDraw(17-05-2025).png"
+                },
+                {
+                    "title": "Physics",
+                    "shortDesc": "Screenshot of Jolt physics backend integrated into the engine.",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/CbePhysics(17-05-2025).png"
                 }
             ],
             "videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
