@@ -229,3 +229,54 @@ This path will be similar to old implementation, except with following changes.
 - The fine granular barriers and resource transfers will be `removed`.
 - Only global memory barrier/cache flush will be issued in `main Queue` and main Queue will be responsible to wait until all previously issued other Queue commands to be completed using semaphores.
 - Once transfer is done a `release memory barrier` will be inserted to `all` available Queues and first command submission in respective Queue will just wait for the flush using semaphore.
+
+### Immediate mode drawing
+
+The immediate mode 3D drawing enables drawing shapes in the world in various layers. Currently world and overlay layers are supported.
+
+Due to the immediate nature of the drawing the draw instances lists are generated each frame and gets uploaded to GPU. Apart from this frustum culling and drawing are similar to mesh/component instances with few data layout differences. One important difference is draw list is generated per layer and not per material like done for components.
+
+Also separate depth overlay attachment is used to support overlay layer without losing world depth.
+
+### Screen space selection buffer
+
+I want to support the screen space selection using IDs written to color attachment buffer. This feature might require major rework in how immediate mode and components are rendered in world.
+
+The conditions/steps I want to draw screen space IDs buffer
+
+- The render pass attachments are limited so add new render pass to just draw IDs.
+- Drawn IDs must be copied to a CPU accessible buffer after rendering in Transfer Queue.
+- Separate render pass means components shard materials must need another permuted variant that accepts color output to IDs attachment.
+- Separate render pass means the immediate mode drawing must be deferred to IDs pass. This won't be an issue as depth buffer from previous render pass can be reused.
+- The immediate mode shaders needs to be modified to also write to IDs output attachment.
+
+After the IDs are rendered the data gets copied to CPU data buffer at Frame sync step between main thread and render thread. This means a new virtual function call must be introduced that gets called in render frame sync code in window rendering. At this sync point we can be sure the rendering is done and copy the IDs buffer.
+
+Another important point to consider is what to write as IDs into the IDs buffer. I would like to keep these ID number as `WorldRenderer` internal details. This means external code must associate some data to each component or intermediate instances it draws.
+
+Following are the choices I decided go with
+
+- The data that gets associated with each draw instance will be a reference counted class data type.
+The type id will be used as simplest form of RTTI.
+
+```cpp
+class SelectionHitProxy
+{
+private:
+    uint32 typeId = 0;
+
+public:
+    SelectionHitProxy(uint32 inTypeId) : typeId(inTypeId) {}
+    NON_MOVE_COPY(SelectionHitProxy)
+    virtual ~SelectionHitProxy() = default;
+
+    virtual void addRef() = 0;
+    virtual void removeRef() = 0;
+    virtual uint32 refCount() const = 0
+};
+```
+
+- The component has virtual interface to provide the hit proxy data. The data returned from that is wrapped inside the proxy data created by `WorldRendererBridge` to support selection to component mapping. If the inner wrapped data is valid it could be forward to gameplay system in future.
+- The immediate draw instances however works differently. Due to immediate nature states cannot be persisted for this reason. All the hit proxy data must be pushed and popped by the code that pushes immediate draws. The persistence of hit proxy data will there by managed by the immediate draw context user.
+- Since immediate draw instances list gets replaced every frame the indices for `SelectionHitProxy` data is managed in two vectors. For components the indices are obtained from a sparse vector. For immediate instances indices are obtained from a frame data unique std::vector.
+The indices assigned to IDs buffer will be encoded so that it can be differentiated. In my case the MSB will be set for immediate instances and not set for every other persistent instances.
