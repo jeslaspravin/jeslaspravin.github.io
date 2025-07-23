@@ -270,6 +270,27 @@
                 "dispName": "Read More"
             },
             "gitLink": null
+        },
+        {
+            "timestamp": 1753221600000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "transaction",
+                "undo",
+                "redo"
+            ],
+            "name": "Cranberry Editor Undo/Redo",
+            "shortDesc": "Initial design of undo and redo functionality in my engine",
+            "description": "<p>Editor Undo and Redo system designed using very basic idea of transactions</p><!--<br>--><p>I am planning to support both action and state based transactions for reflected objects. Having reflection data helpes greatly with general purpose state transactions.</p><!--<br>--><p>Brief summary</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Action based transactions where after an action is performed an undo action gets created and pushed into the transaction list of changes.</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">State based where a snapshot before editing an object is taken and after subsequent edits the corresponding diff gets recorded. Upon undo the difference gets reset into snapshot. Upon redo the difference gets applied on snapshot.</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/PropertiesEditor.png",
+            "galleryImgs": [],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2025/07/23/Editor-Undo-Redo-Transactions/",
+                "dispName": "Read More"
+            },
+            "gitLink": null
         }
     ]
 }

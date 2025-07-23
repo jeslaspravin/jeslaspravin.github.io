@@ -14,9 +14,6 @@ sidebar:
 
 ## Cranberry world renderer
 
-{: .notice--warning}
-**Attention**{: .notice-warn-header} Work in progress
-
 <div class="mermaid">
 ---
 title: Static Mesh GPU Data relations
