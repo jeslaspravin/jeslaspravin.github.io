@@ -9,3 +9,6 @@ vendor
 
 # Include it for use with other workspaces
 !.vscode/tasks.json
+
+# Agents folders
+.crush/*

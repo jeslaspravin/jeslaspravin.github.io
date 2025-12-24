@@ -15,8 +15,13 @@
                 },
                 {
                     "title": "Cranberry Editor",
-                    "shortDesc": "Screenshot of WIP editor interface",
-                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/CranberryEngine(08-01-2023).jpg"
+                    "shortDesc": "Screenshot of editor interface",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/CranberryEditor(24-12-2025).jpg"
+                },
+                {
+                    "title": "Actor Prefab Editor",
+                    "shortDesc": "Screenshot of actor prefab editor interface, an implementation of asset editor",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/ActorPrefabEditor(24-12-2025).jpg"
                 },
                 {
                     "title": "Lumberyard Bistro(Exterior only)",
@@ -35,8 +40,8 @@
                 }
             ],
             "videoUrl": "https://youtube.com/playlist?list=PL-eZ9bjddvKB-rGofNLgwwWCAuijCvpSL",
-            "link": null,
-            "gitLink": "https://github.com/jeslaspravin/Cranberry"
+            "link": "https://discord.gg/2xfVG4QPt8",
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "id": 1000,

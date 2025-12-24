@@ -39,4 +39,7 @@ Cranberry:
       - title: "Unicode and CPP"
         url: "/cranberry/2022/02/11/Unicode-And-CPP/"
       - title: "Undo/Redo system"
-        
+  - title: "Engine Editor"
+    children:
+      - title: "Asset Editor"
+        url: "/cranberry/2025/12/24/Asset-Editor/"

@@ -41,7 +41,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2022/02/11/Unicode-And-CPP/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1696629600000,
@@ -70,7 +70,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2023/10/06/Planning-GAL",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1705190400000,
@@ -94,7 +94,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/01/14/GAL-Resource-And-Memory/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1706396400000,
@@ -129,7 +129,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/01/27/GAL-RenderPass-Framebuffer-Pipelines-Descriptors/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1708732800000,
@@ -156,7 +156,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/02/03/ShaderCompiler/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1709420400000,
@@ -181,7 +181,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/03/03/Basic-Tokenizer/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1725667200000,
@@ -205,7 +205,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/09/07/Cranberry-Renderer/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1732233600000,
@@ -226,7 +226,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/11/22/Cranberry-Audio/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1735513200000,
@@ -249,7 +249,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2024/12/30/Cranberry-Object-GC/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1742601600000,
@@ -269,7 +269,7 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2025/03/22/Cranberry-Physics/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         },
         {
             "timestamp": 1753221600000,
@@ -290,7 +290,38 @@
                 "link": "https://blogs.jeslaspravin.com/cranberry/2025/07/23/Editor-Undo-Redo-Transactions/",
                 "dispName": "Read More"
             },
-            "gitLink": null
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
+        },
+        {
+            "timestamp": 1766534400000,
+            "tags": [
+                "cranberry",
+                "C++",
+                "Editor",
+                "Asset"
+            ],
+            "name": "Cranberry Asset Editors",
+            "shortDesc": "Asset editor framework and system design information",
+            "description": "<p>The Asset Editor is the central hub for inspecting, modifying, and creating assets within the Cranberry Engine</p><p></p><!--<br>--><p>Asset editor framework in my engine is nicely extendable system designed to allow customization of editor built on top of ImGui engine widgets</p><!--<br>--><ul class=\"list-group\"><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Per type factories for asset creation and editing</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Per object asset editor to allow customizing asset editing at per object level</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Custom hooks to extend the editor itself</li><!--<br>--><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Separate per type details panel customizers</li><li class=\"list-group-item mb-1 masked-bg-dark text-reset\">Helpers for each system to mixin features as required</li><!--<br>--></ul>",
+            "tileImageUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/ActorPrefabEditor(24-12-2025)Title.jpg",
+            "galleryImgs": [
+                {
+                    "title": "Cranberry Editor",
+                    "shortDesc": "Screenshot of editor interface",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/CranberryEditor(24-12-2025).jpg"
+                },
+                {
+                    "title": "Actor Prefab Editor",
+                    "shortDesc": "Screenshot of actor prefab editor interface, an implementation of asset editor",
+                    "imgUrl": "https://blogs.jeslaspravin.com/assets/images/CranberryEngine/ActorPrefabEditor(24-12-2025).jpg"
+                }
+            ],
+            "videoUrl": null,
+            "customLink": {
+                "link": "https://blogs.jeslaspravin.com/cranberry/2025/12/24/Asset-Editor/",
+                "dispName": "Read More"
+            },
+            "gitLink": "https://git.jeslaspravin.com/jeslaspravin/Cranberry"
         }
     ]
 }
